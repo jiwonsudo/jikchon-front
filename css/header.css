@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: #FFFFFF;
+  border-bottom: 0.5px solid #DDDDDD;
+}
+
+.header a {
+  color: #000000;
+  font-size: 1em;
+}
+
+.main-logo-container {
+  width: 80px;
+  height: 70%;
+  margin-left: 1em;
+}
+
+.main-logo-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-button-container {
+  width: 90px;
+  height: 75%;
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-button-container img {
+  width: 40px;
+  height: 100%;
+}
