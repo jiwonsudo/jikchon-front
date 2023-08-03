@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+body{
+    background: #F8F8F8;
+}
+.menu-title-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: white;
+    height:7rem;
+}
+.menu-title{
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.recommend-reset-box{
+    display:flex;
+    justify-content: flex-end;
+    margin:0.5rem;
+}
+.recommend-items-list-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.recommend-items-list-row img{
+    width: 5rem;
+    height: 5rem;
+}
+.recommend-item-box{
+    display: flex;
+    padding: 0.75rem 0.75rem 0.5rem 0.75rem;
+    flex-direction: column;
+    justify-content: center;
+    background: #FFF;
+    gap: 0.25rem;
+    border-radius: 1.25rem;
+}
+.item-name{
+    color: #000;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.recommend-items-list-row{
+    display: flex;
+    gap:0.25rem;
+}
+.recommend-items-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.button-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:2.25rem;
+}
+
+.submit{
+    display: flex;
+    width: 19rem;
+    padding: 0.75rem 7.75rem;
+    justify-content: center;
+    gap: 0.75rem;
+    color: white;
+    background-color: black;
+}
