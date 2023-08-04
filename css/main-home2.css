@@ -7,6 +7,10 @@
 
 .container {
     font-family: 'Pretendard-Regular';
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: 100vh;
 }
 
 .category-details {
@@ -31,7 +35,8 @@
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;        
+    line-height: normal;
+    border: none;        
 }
 
 .category-details button:hover {
@@ -41,7 +46,8 @@
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
-    line-height: normal;    
+    line-height: normal;
+    border: none;    
 }
 
 hr {
