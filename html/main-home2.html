@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/header.css" rel="stylesheet">
+
+  <!-- 아래의 'reset.css'를 포함하지 않고 header 컴포넌트를 쓸 경우, css 적용 시 모습이 달라질 수 있습니다. -->
+  <link href="../css/reset.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/main-home2.css">
+
+  <title>main-home-2</title>
+</head>
+
+<body>
+
+  <!-- 로그인 된 상태일 경우 -->
+  <header class="header">
+    <div class="main-logo-container">
+      <!-- 아래 a href 속성에 링크 추가-->
+      <a href=""><img src="../images/main_logo.png" /></a>
+    </div>
+    <div class="nav-button-container">
+      <!-- 아래 a href 속성에 링크 추가-->
+      <a href=""><img src="../images/cart-icon.svg" /></a>
+      <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
+    </div>
+  </header>
+
+  <!-- 로그인 안 된 상태일 경우 -->
+  <header class="header">
+    <div class="main-logo-container">
+      <!-- 아래 a href 속성에 링크 추가-->
+      <a href=""><img src="../images/main_logo.png" /></a>
+    </div>
+    <div class="nav-button-container">
+      <!-- 아래 a href 속성에 링크 추가-->
+      <a href="">
+        <h1>로그인</h1>
+      </a>
+      <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="category-details">
+      <button class="fruits" type="button">과일</button>
+      <button class="vegetables" type="button">채소</button>
+      <button class="mushrooms" type="button">버섯</button>
+      <button class="grains" type="button">곡물</button>
+      <button class="driedProduce" type="button">건농산물</button>
+    </div>
+    <hr>
+
+    <!-- 무한스크롤로 구현 -->
+    <div class="prod-list">
+      <ul role="list">
+        <li>
+          <img src="../images/recommendLIst-1.jpg" alt="product1" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+        <li>
+          <img src="../images/recommendLIst-2.jpg" alt="product2" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+        <li>
+          <img src="../images/recommendLIst-3.jpg" alt="product3" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+        <li>
+          <img src="../images/product4.jpg" alt="product1" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+        <li>
+          <img src="../images/product5.jpg" alt="product2" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+        <li>
+          <img src="../images/product6.jpg" alt="product3" class="prod-img">
+          <div class="prod-info">
+            <div class="product">
+              <div class="brands">
+                <p>상호명</p>
+                <img src="../images/cart-icon.svg" class="cart-img" />
+              </div>
+              <div class="prod-name">
+                <p>상품이름</p>
+              </div>
+            </div>
+            <div class="price">10000원</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

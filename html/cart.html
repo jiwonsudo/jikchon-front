@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/header.css" rel="stylesheet">
+
+    <!-- 아래의 'reset.css'를 포함하지 않고 header 컴포넌트를 쓸 경우, css 적용 시 모습이 달라질 수 있습니다. -->
+    <link href="../css/reset.css" rel="stylesheet">
+    <link href="../css/cart.css" rel="stylesheet">
+
+    <title>장바구니</title>
+</head>
+
+<body>
+
+    <!-- 로그인 된 상태일 경우 -->
+    <header class="header">
+        <div class="main-logo-container">
+            <!-- 아래 a href 속성에 링크 추가-->
+            <a href=""><img src="../images/main_logo.png" /></a>
+        </div>
+        <div class="nav-button-container">
+            <!-- 아래 a href 속성에 링크 추가-->
+            <a href=""><img src="../images/cart-icon.svg" /></a>
+            <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
+        </div>
+    </header>
+
+    <!-- 로그인 안 된 상태일 경우 -->
+    <header class="header">
+        <div class="main-logo-container">
+            <!-- 아래 a href 속성에 링크 추가-->
+            <a href=""><img src="../images/main_logo.png" /></a>
+        </div>
+        <div class="nav-button-container">
+            <!-- 아래 a href 속성에 링크 추가-->
+            <a href=""><h1>로그인</h1></a>
+            <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>장바구니</h1>
+        <hr>
+        <form method="post">
+            <section class="cart-list">
+                <ul role="list">
+                    <li>
+                        <img src="../images/lemon.png" alt="" class="prod-img">
+                        <div class="cart-component">
+                            <div class="row-dir-box">
+                                <p class="brands">상호명</p>
+                                <div class="amount-box">
+                                    <button class="quantity-btn" id="decrease">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn" id="increase">+</button>
+                                </div>
+                            </div>
+                            <p class="prod-name">프로덕트 이름</p>
+                            <p class="address">강원시 00시 00동</p>
+                            <p class="price">00000원</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/garlic.png" alt="" class="prod-img">
+                        <div class="cart-component">
+                            <div class="row-dir-box">
+                                <p class="brands">상호명</p>
+                                <div class="amount-box">
+                                    <button class="quantity-btn" id="decrease">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn" id="increase">+</button>
+                                </div>
+                            </div>
+                            <p class="prod-name">프로덕트 이름</p>
+                            <p class="address">강원시 00시 00동</p>
+                            <p class="price">00000원</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../images/cabbage.png" alt="" class="prod-img">
+                        <div class="cart-component">
+                            <div class="row-dir-box">
+                                <p class="brands">상호명</p>
+                                <div class="amount-box">
+                                    <button class="quantity-btn" id="decrease">-</button>
+                                    <input type="text" class="quantity-input" value="1">
+                                    <button class="quantity-btn" id="increase">+</button>
+                                </div>
+                            </div>
+                            <p class="prod-name">프로덕트 이름</p>
+                            <p class="address">강원시 00시 00동</p>
+                            <p class="price">00000원</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="total-price-box">
+                    <p>결제 예정 금액: </p>
+                    <input type="text" value="00000원">
+                </div>
+                <div class="btn-box">
+                    <button class="cart-btn">결제하기</button>
+                    <button class="buy-btn">기존 화면으로 돌아가기</button>
+                </div>
+            </section>
+        </form>
+    </div>
+</body>
+
+</html>
