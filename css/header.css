@@ -6,6 +6,13 @@
   justify-content: center;
   background-color: #FFFFFF;
   border-bottom: 0.5px solid #DDDDDD;
+  position: fixed;
+  top: 0;
+}
+
+.header.scrolled-up {
+  margin-top: 70px;
+  position: relative;
 }
 
 .header a {
@@ -24,6 +31,8 @@
   height: 100%;
 }
 
-.h {
+test {
+  margin-top: 50px;
+  display: block;
   font-size: 5em;
 }
