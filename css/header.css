@@ -10,11 +10,6 @@
   top: 0;
 }
 
-.header.scrolled-up {
-  margin-top: 70px;
-  position: relative;
-}
-
 .header a {
   color: #000000;
   font-size: 1em;
