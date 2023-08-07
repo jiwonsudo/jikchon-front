@@ -1,3 +1,7 @@
+.login-container {
+  margin-bottom: calc(100vh - 520px);
+}
+
 .title {
   width: 70%;
   margin: 120px auto 0;

@@ -39,7 +39,7 @@
   outline: none;
 }
 
-.input-password {
+.input-name, .input-password {
   width: 98%;
   margin: 0 auto;
 }
