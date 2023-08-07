@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../css/reset.css" rel="stylesheet">
   <link href="../css/header.css" rel="stylesheet">
+  <link href="../css/navbar.css" rel="stylesheet">
   <link href="../css/footer.css" rel="stylesheet">
   <link href="../css/shop_receipt.css" rel="stylesheet">
   <title>직촌 - 영수증</title>
@@ -16,12 +17,22 @@
       <!-- 아래 a href 속성에 링크 추가-->
       <a href=""><img src="../images/main_logo.png"/></a>
     </div>
-    <div class="nav-button-container">
-      <!-- 아래 a href 속성에 링크 추가-->
-      <a href=""><img src="../images/cart-icon.svg"/></a>
-      <a href=""><img src="../images/hamburger-menu-icon.svg"/></a>
-    </div>
   </header>
+
+  <nav>
+    <a class="back-button" href="">
+      <img src="../images/back_icon.svg">
+    </a>
+    <a class="cart-button" href="">
+      <img src="../images/cart_icon.svg">
+    </a>
+    <a class="home-button" href="">
+      <img src="../images/home_icon.svg">
+    </a>
+    <a class="mypage-button" href="">
+      <img src="../images/mypage_icon.svg">
+    </a>
+  </nav>
 
   <section class="buyer-info-container">
     <div>
@@ -70,7 +81,10 @@
     </div>
   </section>
 
-  <footer class="footer"></footer>
+  <footer class="footer">
+    <p>&#169; 2023. Team JikChon All rights reserved.</p>
+  </footer>
   
+  <script src="../js/header.js"></script>
 </body>
 </html>

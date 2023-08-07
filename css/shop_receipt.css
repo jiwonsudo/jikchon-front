@@ -1,13 +1,12 @@
 .buyer-info-container {
   width: 80%;
-  margin: 50px auto 0;
+  margin: 120px auto 0;
 }
 
 .buyer-info-container div {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .buyer-info-container div:nth-child(2) {
@@ -31,7 +30,7 @@
 
 .receipt-container {
   width: 90%;
-  margin: 70px auto 0;
+  margin: 70px auto calc(100vh - 590px);
 }
 
 .receipt-header {
