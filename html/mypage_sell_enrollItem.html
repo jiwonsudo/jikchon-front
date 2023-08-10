@@ -7,8 +7,9 @@
   <link href="../css/mypage_sell_enrollItem.css" rel="stylesheet">
   <!-- 아래의 'reset.css'를 포함하지 않고 header 컴포넌트를 쓸 경우, css 적용 시 모습이 달라질 수 있습니다. -->
   <link href="../css/reset.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-
+  <script src="../js/mypage_sell_enrollItem.js" defer></script>
 
   <title>상품 판매 등록</title>
 </head>
@@ -40,6 +41,20 @@
             <p class = "item-enroll-title">제품명</p>
             <input type = "text" id = "item-name" class = "input" readonly/>
         </div>
+        <div class = "item-category">
+          <p class = "item-enroll-title">상품 카테고리</p>
+          <select name = "카테고리" class =  "item-big-category" id = "item-big-category">
+            <option disabled selected>카테고리</option>
+            <option value = "농산물">농산물</option>
+            <option value = "축산물">축산물</option>
+            <option value = "수산물">수산물</option>
+            <option value = "가공식품">가공식품</option>
+          </select>
+            
+          <select name = "세부카테고리" class = "item-small-category" id = "item-small-category">
+            <option disabled selected>세부 카테고리</option>
+          </select>
+        </div>
         <div class = "item-price-box" >
             <p class = "item-enroll-title">가격</p>
             <input type = "number" id = "item-price" class = "input" readonly/>
@@ -52,7 +67,7 @@
             <p class = "item-enroll-title">상품 소개</p>
             <input type = "field" id = "item-introduce" class = "field" readonly/>
         </div>
-        <button class = "submit-button">저장하기</button>
+        <button type = "submit" class = "submit-button" onclick="submit()">저장하기</button>
     </div>
     
   </main>

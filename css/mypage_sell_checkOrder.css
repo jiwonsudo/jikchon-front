@@ -5,7 +5,12 @@
     font-style: normal;
 }
 body{
+    margin-top:60px;
+    height:90%;
     background: #F8F8F8;
+}
+main{
+    height:800px;
 }
 
 .menu-title-box{
