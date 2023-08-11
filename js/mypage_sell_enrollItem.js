@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var bigCategorySelect = document.getElementById("item-big-category");
+  setCategory();
+});
+
+function setCategory(){
+  var bigCategorySelect = document.getElementById("item-big-category");
     var smallCategorySelect = document.getElementById("item-small-category");
     
     // bigCategorySelect의 변경에 따라 smallCategorySelect 옵션을 설정하는 함수
@@ -27,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         smallCategorySelect.appendChild(option);
       });
     }
-  });
+}
 
 function loadFile(event){
     console.log("file load");
@@ -47,7 +51,7 @@ function loadFile(event){
 
   function submit(){
     var productName = document.getElementById('item-name').value;
-    //var category = document.getElementById('item-name').value;
+    var smallCategory = document.getElementById('item-small-category').value;
     var price = document.getElementById('item-price').value;
     var quantity = document.getElementById('item-amount').value;
     var intro = document.getElementById('item-introduce').value;
@@ -58,7 +62,30 @@ function loadFile(event){
         'productName': productName,
         'price' : price,
         'quantity' : quantity,
+        // 'smallCategory':smallCategory,
         'intro' : intro
     }
+
+    // const formData = newFormData();
+    // formData.append(
+    //     new Blob([Json.stringify(itemRequest)],{
+    //         type:'application/json'
+    //     })
+    // );
+    // const url = "http://127.0.0.1:8000";
+    // const tokenn = localStorage.getItem('token');
+    // var myHeaders = new Headers();
+    // myHeaders.append('Authorization','Bearer'+token);
+    // fetch(url{
+    //     headers: myHeaders,
+    //     body:formData,
+    //     method: "POST"
+    // })
+    // .then((Response)=>Response.json())
+    // .then((result)=>console.log(result))
+    // .catch((error)=>{
+    //     console.error(error);
+    // })
+    console.log("전송완료 : ",selectedItem)
   }
 
