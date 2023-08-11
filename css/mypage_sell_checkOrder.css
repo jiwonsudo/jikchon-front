@@ -5,12 +5,13 @@
     font-style: normal;
 }
 body{
-    margin-top:60px;
+    margin-top:5rem;
     height:90%;
-    background: #F8F8F8;
+    background-color: white;
 }
 main{
     height:800px;
+    background: #F8F8F8;
 }
 
 .menu-title-box{
@@ -33,8 +34,9 @@ main{
 }
 .order-list{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-
+    align-items: center;
 }
 .order-box{
     width:90%;

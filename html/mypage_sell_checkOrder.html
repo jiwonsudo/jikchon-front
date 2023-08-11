@@ -9,6 +9,8 @@
   <link href="../css/footer.css" rel="stylesheet">
   <link href="../css/mypage_sell_checkOrder.css" rel="stylesheet">
 
+  <script src="../js/mypage_sell_checkOrder.js" defer></script>
+
   <title>상품 판매 등록</title>
 </head>
 <body>
@@ -35,28 +37,10 @@
   </nav>
 
   <main>
-    <!--JS로 작성해야하는 부분-->
     <div class = "menu-title-box">
         <p class = "menu-title">구매 목록 확인</p>
     </div>
-    <div id = "order-list" class = "order-list">
-        <div class = "order-box">
-            <div class = order-box-left>
-                <p class = "order-number">주문번호 12345678</p>
-                <div class = item-image-box>
-                    <img id = "item-image" class = "item-image" src = ../images/apple.png>
-                    <img id = "item-image" class = "item-image" src = ../images/eggs.png>
-                    <img id = "item-image" class = "item-image" src = ../images/cabbage.png>
-                </div>
-            </div>
-            <div class = order-box-right>
-                <p class = "order-date">2023.01.01</p>
-                <p class = "order-price" class = "order-price">00000원</p>
-                <a href=""><p class = "order-detail" id = "order-detail">자세히보기</p></a>
-            </div>
-        </div>
-    </div>
-    <!---->
+    <div id = "order-list" class = "order-list"></div>
 
   </main>
   <footer class="footer">
