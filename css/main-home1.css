@@ -15,6 +15,8 @@
     flex-direction: column;
     /* justify-content: center; */
     height: 100vh;
+    width: auto;
+    margin-top: 1.5rem;
 }
 
 .today-recommend {
@@ -43,6 +45,7 @@ h2 {
 }
 
 .recommend-list {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +53,14 @@ h2 {
 
 .recommend-list ul {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1rem;
+    overflow: auto scroll;
+    white-space: nowrap;
+}
+
+.recommend-list ul::-webkit-scrollbar{
+    display: none; 
 }
 
 .recommend-list li {
@@ -143,6 +151,7 @@ hr {
     justify-content: center;
     align-items: center;
     gap: 1.375rem;
+    margin-bottom: auto;
 }
 
 .category {
