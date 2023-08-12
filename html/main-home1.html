@@ -14,8 +14,10 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="../css/main-home1.css" class="href">
+  <script src="../js/header.js" defer></script>
+  <script src="../js/main-home1.js" defer></script>
 
-  <title>main-home-1</title>
+  <title>직촌</title>
 </head>
 
 <body>
@@ -25,11 +27,6 @@
       <!-- 아래 a href 속성에 링크 추가-->
       <a href=""><img src="../images/main_logo.png" /></a>
     </div>
-    <div class="nav-button-container">
-      <!-- 아래 a href 속성에 링크 추가-->
-      <a href=""><img src="../images/cart-icon.svg" /></a>
-      <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
-    </div>
   </header>
 
   <!-- 로그인 안 된 상태일 경우 -->
@@ -38,31 +35,28 @@
       <!-- 아래 a href 속성에 링크 추가-->
       <a href=""><img src="../images/main_logo.png" /></a>
     </div>
-    <div class="nav-button-container">
-      <!-- 아래 a href 속성에 링크 추가-->
-      <a href="">
-        <h1>로그인</h1>
-      </a>
-      <a href=""><img src="../images/hamburger-menu-icon.svg" /></a>
-    </div>
   </header>
 
   <div class="container">
     <section class="today-recommend">
+
+      <!-- userName 받아오기 -->
       <h2>OOO님을 위한 오늘의 추천</h2>
 
       <!-- 추후 물품 스와이프로 넘어가도록 구현 -->
       <div class="recommend-list">
         <ul role="list">
           <li>
-            <img src="../images/recommendLIst-1.jpg" alt="product1" class="prod-img">
+            <a href="../html/product-info.html"><img src="../images/recommendLIst-1.jpg" alt="product1" class="prod-img"></a>
             <div class="prod-info">
               <div class="product">
                 <div class="brands">
                   <p>상호명</p>
-                  <img src="../images/cart-icon.svg" class="cart-img" />
+                  <img src="../images/cart_icon.svg" class="cart-img" />
                 </div>
-                <div class="prod-name"><p>상품이름</p></div>
+                <div class="prod-name">
+                  <p>상품이름</p>
+                </div>
               </div>
               <div class="price">10000원</div>
             </div>
@@ -73,9 +67,11 @@
               <div class="product">
                 <div class="brands">
                   <p>상호명</p>
-                  <img src="../images/cart-icon.svg" class="cart-img" />
+                  <img src="../images/cart_icon.svg" class="cart-img" />
                 </div>
-                <div class="prod-name"><p>상품이름</p></div>
+                <div class="prod-name">
+                  <p>상품이름</p>
+                </div>
               </div>
               <div class="price">10000원</div>
             </div>
@@ -86,9 +82,26 @@
               <div class="product">
                 <div class="brands">
                   <p>상호명</p>
-                  <img src="../images/cart-icon.svg" class="cart-img" />
+                  <img src="../images/cart_icon.svg" class="cart-img" />
                 </div>
-                <div class="prod-name"><p>상품이름</p></div>
+                <div class="prod-name">
+                  <p>상품이름</p>
+                </div>
+              </div>
+              <div class="price">10000원</div>
+            </div>
+          </li>
+          <li>
+            <a href="../html/product-info.html"><img src="../images/onion.png" alt="product1" class="prod-img"></a>
+            <div class="prod-info">
+              <div class="product">
+                <div class="brands">
+                  <p>상호명</p>
+                  <img src="../images/cart_icon.svg" class="cart-img" />
+                </div>
+                <div class="prod-name">
+                  <p>상품이름</p>
+                </div>
               </div>
               <div class="price">10000원</div>
             </div>
@@ -97,15 +110,31 @@
       </div>
       <hr>
     </section>
+
     <section class="category-box">
-      <h2>카테고리별 쇼핑하기 > </h2>
+      <h2>카테고리별 쇼핑하기 ></h2>
       <div class="category">
-        <div class="farm-prod"><img src="../images/farm-prod.png"/></div>
-        <div class="livestock-prod"><img src="../images/livestock-prod.png" alt=""></div>
-        <div class="marine-prod"><img src="../images/marine-prod.png" alt=""></div>
-        <div class="process-prod"><img src="../images/process-prod.png" alt=""></div>
+        <div class="farm-prod">
+          <a href="../html/main-home2.html" target="_blank"><img src="../images/farm-prod.png"
+              class="category-elem" /></a>
+        </div>
+        <div class="livestock-prod">
+          <a href="../html/main-home2.html" target="_blank"><img src="../images/livestock-prod.png"
+              class="category-elem"></a>
+        </div>
+        <div class="marine-prod">
+          <a href="../html/main-home2.html" target="_blank"><img src="../images/marine-prod.png"
+              class="category-elem"></a>
+        </div>
+        <div class="process-prod">
+          <a href="../html/main-home2.html" target="_blank"><img src="../images/process-prod.png"
+              class="category-elem"></a>
+        </div>
       </div>
     </section>
+
+    <iframe src="../html/navbar.html" frameborder="0" width="100%" height="50"></iframe>
+    <iframe src="../html/footer.html" frameborder="0" width="100%" height="50"></iframe>
   </div>
 </body>
 
