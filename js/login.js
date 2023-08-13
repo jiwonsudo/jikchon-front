@@ -25,6 +25,7 @@ function login() {
     .then(response => {
       if (response.status === 200) {
         localStorage.setItem('access_token', response.data.accessToken);
+        localStorage.setItem('user_role', response.data.role);
         window.alert('로그인에 성공하였습니다.');
         window.location.href = './';
       } else {
