@@ -1,5 +1,13 @@
 let fetchData = [];
 var myHeaders = new Headers();
+let pageNum  = 0;
+
+const urlParams = new URLSearchParams(window.location.search);
+const categoryId = urlParams.get('id');
+console.log(categoryId);
+const url = `/products?category=${categoryId}&page=${pageNum}`
+
+ renderSubCategoryBtn();
 
 function loadProdData() {
     fetch(url, {
@@ -14,6 +22,52 @@ function loadProdData() {
         .catch((error) => {
             console.error('An error occurred while loading store data:', error);
         });
+}
+
+function renderSubCategoryBtn() {
+  const categoryDetails = document.getElementById("category-details");
+  if (categoryId == 1){
+    categoryDetails.innerHTML = `
+      <button class="fruits" type="button"><span>과일</span></button>
+      <button class="vegetables" type="button"><span>채소</span></button>
+      <button class="mushrooms" type="button"><span>버섯</span></button>
+      <button class="grains" type="button"><span>곡물</span></button>
+      <button class="driedProduce" type="button"><span>건농산물</span></button>
+    `;
+  }
+  else if (categoryId == 2) {
+    categoryDetails.innerHTML = `
+      <button class="fruits" type="button"><span>소</span></button>
+      <button class="vegetables" type="button"><span>돼지</span></button>
+      <button class="mushrooms" type="button"><span>닭/오리/알류</span></button>
+      <button class="grains" type="button"><span>육가공류</span></button>
+    `;
+  }
+  else if (categoryId == 3) {
+    categoryDetails.innerHTML = `
+      <button class="fruits" type="button"><span>생선류</span></button>
+      <button class="vegetables" type="button"><span>건어물</span></button>
+      <button class="mushrooms" type="button"><span>김/해조류</span></button>
+      <button class="grains" type="button"><span>해산물/어패류</span></button>
+      <button class="driedProduce" type="button"><span>수산가공물</span></button>
+    `;    
+  } 
+  else if (categoryId == 4) {
+    categoryDetails.innerHTML = `
+      <button class="fruits" type="button"><span>양념류</span></button>
+      <button class="vegetables" type="button"><span>반찬류</span></button>
+      <button class="mushrooms" type="button"><span>유제품</span></button>
+    `;        
+  }
+  else {
+    categoryDetails.innerHTML = `
+    <button class="fruits" type="button"><span>과일</span></button>
+    <button class="vegetables" type="button"><span>채소</span></button>
+    <button class="mushrooms" type="button"><span>버섯</span></button>
+    <button class="grains" type="button"><span>곡물</span></button>
+    <button class="driedProduce" type="button"><span>건농산물</span></button>
+  `;        
+  }
 }
 
 function renderProdData(data) {
@@ -48,15 +102,6 @@ function renderProdData(data) {
 
 function categoryFilter() {
     $('.category-details button').on('click', function (event) {
-        event.preventDefault(); // 기본 동작 중지
-
-        let selectedCategory = $(this).find('span').text();
-
-        // 선택한 카테고리에 해당하는 데이터만 필터링
-        let filteredData = fetchData.filter(function (store) {
-            return store.category === selectedCategory;
-        });
-
-        renderProdData(filteredData); // 필터링된 데이터를 테이블에 출력
+        event.preventDefault();
     });
 }
