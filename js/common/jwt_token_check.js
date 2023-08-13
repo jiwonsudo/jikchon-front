@@ -1,3 +1,12 @@
+// Description: jwt 토큰 관련 함수들을 모아놓은 파일입니다.
+
+/*
+  import 사용법:
+
+import {checkTokenExistence, checkUserRole, checkTokenValid, logOut} from './common/jwt_token_check.js';
+
+*/
+
 /** 
  * (페이지 이동 시) 초기 토큰 확인 함수
  * 
@@ -77,7 +86,3 @@ function inquireCart() {
     console.log(response.data); // 가져온 데이터 처리
   });
 }
-
-
-// 아래 세 함수만 필요에 따라 타 파일에서 import 후 사용하면 됩니다.
-export default {checkTokenExistence, checkTokenValid, checkUserRole, logOut};

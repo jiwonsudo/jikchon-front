@@ -7,7 +7,7 @@
   <link href="../css/header.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
   <link href="../css/footer.css" rel="stylesheet">
-  <link href="../css/mypage_buyer.css" rel="stylesheet">
+  <link href="../css/mypage_customer.css" rel="stylesheet">
   <title>직촌 - 마이페이지</title>
 </head>
 <body>
@@ -20,16 +20,16 @@
   </header>
 
   <nav>
-    <a class="back-button" href="">
+    <a id="back-button">
       <img src="../images/back_icon.svg">
     </a>
-    <a class="cart-button" href="">
+    <a id="cart-button">
       <img src="../images/cart_icon.svg">
     </a>
-    <a class="home-button" href="">
+    <a id="home-button" href="../html/main-home1.html">
       <img src="../images/home_icon.svg">
     </a>
-    <a class="mypage-button" href="">
+    <a id="mypage-button">
       <img src="../images/mypage_icon.svg">
     </a>
   </nav>
@@ -38,22 +38,23 @@
     <h1 class="mypage-seller-title">마이페이지</h1>
     <div class="move-page-container">
       <hr class="move-page-divider">
-      <div class="move-page-component">
+      <a href="./mypage_con_checkOrder.html" class="move-page-component">
         <h1>구매 목록 확인</h1>
         <h2>></h2>
-      </div>
+      </a>
       <hr class="move-page-divider">
-      <div class="move-page-component">
-        <h1>관심 상품 선택</h1>
+      <a href="./interest-product.html" class="move-page-component">
+        <h1>관심 상품 선택 관리</h1>
         <h2>></h2>
-      </div>
+      </a>
       <hr class="move-page-divider">
-      <div class="move-page-component">
-        <h1>회원 정보 관리</h1>
+      <a href="./register_edit_customer.html" class="move-page-component">
+        <h1>회원 정보 수정</h1>
         <h2>></h2>
-      </div>
+      </a>
       <hr class="move-page-divider">
     </div>
+    <a id='logout-button' class="logout-button">로그아웃</a>
   </section>
 
   <footer class="footer">
@@ -61,5 +62,8 @@
   </footer>
   
   <script src="../js/header.js"></script>
+  <script type="module" src="../js/mypage_customer.js"></script>
+  <script type="module" src="../js/navbar.js"></script>
+  <script type="module" src="../js/common/jwt_token_check.js"></script>
 </body>
 </html>

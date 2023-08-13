@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../css/reset.css" rel="stylesheet">
   <link href="../css/header.css" rel="stylesheet">
+  <link href="../css/modal.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
   <link href="../css/footer.css" rel="stylesheet">
   <link href="../css/login.css" rel="stylesheet">
@@ -19,17 +20,31 @@
     </div>
   </header>
 
+  <div class="modal">
+      <h1>가입 유형 선택</h1>
+      <div class="modal-content">
+        <h2>고객님의 가입 유형을 선택해 주세요.</h2>
+        <button class="modal-close-button">
+          <img src="../images/x_icon.svg">
+        </button>
+        <div class="modal-option">
+          <button class="left-button">판매자로 가입</button>
+          <button class="right-button">구매자로 가입</button>
+        </div>
+      </div>
+  </div>
+
   <nav>
-    <a class="back-button" href="">
+    <a id="back-button">
       <img src="../images/back_icon.svg">
     </a>
-    <a class="cart-button" href="">
+    <a id="cart-button">
       <img src="../images/cart_icon.svg">
     </a>
-    <a class="home-button" href="">
+    <a id="home-button" href="../html/main-home1.html">
       <img src="../images/home_icon.svg">
     </a>
-    <a class="mypage-button" href="">
+    <a id="mypage-button">
       <img src="../images/mypage_icon.svg">
     </a>
   </nav>
@@ -41,7 +56,7 @@
       <input id="password" type="password" placeholder="비밀번호">
     </div>
     <div class="registration-container">
-      <a href="">회원가입</a>
+      <a id="register-button">회원가입</a>
     </div>
     <div class="login-button-container">
       <button id="login-button" class="login-button">로그인</button>
@@ -53,5 +68,7 @@
   </footer>
   
   <script src="../js/login.js"></script>
+  <script type="module" src="../js/navbar.js"></script>
+  <script type="module" src="../js/common/jwt_token_check.js"></script>
 </body>
 </html>
