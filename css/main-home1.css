@@ -51,6 +51,14 @@ h2 {
     align-items: center;
 }
 
+.recommend-list p {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    font-size: 130%;
+}
+
 .recommend-list ul {
     display: flex;
     align-items: center;

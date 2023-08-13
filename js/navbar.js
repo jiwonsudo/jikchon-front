@@ -1,4 +1,4 @@
-import jwt_token_check from "./common/jwt_token_check";
+import {checkTokenExistence, checkUserRole} from './common/jwt_token_check.js';
 
 const btnGoBack = document.getElementById('back-button');
 const btnGoCart = document.getElementById('cart-button');
@@ -9,7 +9,7 @@ btnGoBack.addEventListener('click', () => {
 })
 
 btnGoCart.addEventListener('click', () => {
-  if (jwt_token_check.checkTokenExistence()) {
+  if (checkTokenExistence()) {
     window.location.href = './cart.html';
   } else {
     window.location.href = './login.html';
@@ -17,10 +17,10 @@ btnGoCart.addEventListener('click', () => {
 });
 
 btnGoMyPage.addEventListener('click', () => {
-  if (jwt_token_check.checkTokenExistence()) {
-    if (jwt_token_check.checkUserRole() === 'seller') {
+  if (checkTokenExistence()) {
+    if (checkUserRole() === 'seller') {
       window.location.href = './mypage_seller.html';
-    } else if (jwt_token_check.checkUserRole() === 'customer') {
+    } else if (checkUserRole() === 'customer') {
       window.location.href = './mypage_customer.html';
     }
   } else {
