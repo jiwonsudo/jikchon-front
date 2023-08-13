@@ -35,6 +35,10 @@ function checkTokenValid(response) {
   }
 }
 
+/**
+ * 로그아웃 함수 (추후 구현 예정)
+ */
+
 
 // 예시 - 장바구니 조회 함수
 function inquireCart() {
@@ -50,6 +54,7 @@ function inquireCart() {
     console.log(data); // 가져온 데이터 처리
   });
 }
+
 
 
 export default {checkToken, checkTokenValid};
