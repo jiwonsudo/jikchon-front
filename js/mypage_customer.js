@@ -1,4 +1,6 @@
-import {checkTokenExistence, checkUserRole} from './common/jwt_token_check.js';
+import {checkTokenExistence, checkUserRole, logOut} from './common/jwt_token_check.js';
+
+const btnLogOut = document.getElementById('logout-button');
 
 // 로그인 확인부
 if (!checkTokenExistence()) {
@@ -12,5 +14,4 @@ if (!checkTokenExistence()) {
   }
 }
 
-
-
+btnLogOut.addEventListener('click', logOut);

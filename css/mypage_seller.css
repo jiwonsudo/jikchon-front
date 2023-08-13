@@ -18,9 +18,9 @@
 
 .move-page-divider {
   width: 100%;
-  height: 0.5px;
+  height: 1px;
   border: none;
-  background-color: #DDDDDD;
+  background-color: #b9b9b9;
 }
 
 .move-page-component {
@@ -43,4 +43,12 @@
 
 .move-page-component h2 {
   padding-right: 2%;
+}
+
+.logout-button {
+  width: 100%;
+  margin-top: 15px;
+  display: block;
+  text-align: right;
+  color: #206ef5;
 }
