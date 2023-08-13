@@ -77,7 +77,3 @@ function inquireCart() {
     console.log(response.data); // 가져온 데이터 처리
   });
 }
-
-
-// 아래 세 함수만 필요에 따라 타 파일에서 import 후 사용하면 됩니다.
-export default {checkTokenExistence, checkTokenValid, checkUserRole, logOut};
