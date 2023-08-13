@@ -16,17 +16,16 @@
 }
 
 .category-details {
-    overflow: auto;
+    overflow: auto scroll;
     display: flex;
     width: 100%;
-    align-items: flex-end;    
+    align-items: flex-end;   
     gap: 0.75rem;
-    margin: 1.75rem 1.13rem 1rem 1.13rem;
+    margin: 1.75rem 1rem 1rem 1rem;
 }
 
 .category-details button {
     font-family: 'Pretendard-Regular';
-    text-orientation: mixed;  /* 텍스트의 방향을 혼합으로 설정 */
     white-space: nowrap; /* 긴 텍스트가 다음 줄로 넘어가지 않도록 설정 */    
     border-radius: 0.3125rem;
     background: #E7E7E7;

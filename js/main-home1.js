@@ -6,7 +6,6 @@ attachMenuClickEvent();
 // 추천 상품 load
 function loadRecommendList() {
     console.log(token);
-    // url 이후에 추가하기!!
     fetch(url, {
         headers: myHeaders,
     })
@@ -55,19 +54,23 @@ function attachMenuClickEvent() {
         elem.addEventListener('click', () => {
             if (index === 0) {
                 console.log(0);
-                // 농산물 페이지인거 main-home2.js에 넘겨주기
+                // 농산물 페이지인거 main-home2.js에 넘겨주기 -> 1
+                window.open(`../html/main-home2.html?id=${index+1}`);
             }
             else if (index === 1) {
                 console.log(1);
-                // 축산물 페이지인거 main-home2.js에 넘겨주기
+                // 축산물 페이지인거 main-home2.js에 넘겨주기 -> 2
+                window.open(`../html/main-home2.html?id=${index+1}`);
             }
             else if (index === 2) {
                 console.log(2);
-                // 해산물 페이지인거 main-home2.js에 넘겨주기
+                // 해산물 페이지인거 main-home2.js에 넘겨주기 -> 3
+                window.open(`../html/main-home2.html?id=${index+1}`);
             }
             else if (index === 3) {
                 console.log(3);
-                // 가공식품 페이지인거 main-home2.js에 넘겨주기
+                // 가공식품 페이지인거 main-home2.js에 넘겨주기 -> 4
+                window.open(`../html/main-home2.html?id=${index+1}`);
             }
         });
         pageNum++;
