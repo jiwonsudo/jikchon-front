@@ -2,7 +2,6 @@
 // 로그인 api
 
 
-
 let prodList = [
     {
         imgUrl: '../images/lemon.png',
@@ -72,6 +71,10 @@ let prodList = [
     }
 ];
 
+var myHeaders = new Headers();
+const token = localStorage.getItem('token');
+
+
 let interestProd = {
     interestCategory: []
 }
@@ -81,6 +84,8 @@ let prodEndIndex = 9;
 
 window.onload = function() {
     loadInterestedList();
+    var teadbear = 'Bearer ' + token;        
+    myHeaders.append('Authorization', 'Bearer ' + token);
 };
 
 function loadInterestedList() {
