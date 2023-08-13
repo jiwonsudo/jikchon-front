@@ -12,6 +12,7 @@ btnGoCart.addEventListener('click', () => {
   if (checkTokenExistence()) {
     window.location.href = './cart.html';
   } else {
+    window.alert('로그인이 필요한 서비스입니다. 로그인 화면으로 이동합니다.');
     window.location.href = './login.html';
   }
 });
@@ -24,6 +25,7 @@ btnGoMyPage.addEventListener('click', () => {
       window.location.href = './mypage_customer.html';
     }
   } else {
+    window.alert('로그인이 필요한 서비스입니다. 로그인 화면으로 이동합니다.');
     window.location.href = './login.html';
   }
 });
