@@ -1,6 +1,8 @@
 let fetchData = [];
 var postHeaders = new Headers();
 
+ // prod id 받아오기
+
 function loadProdData() {
 
     /* 통신용 코드 */

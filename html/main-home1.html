@@ -14,9 +14,10 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="../css/main-home1.css" class="href">
+  
   <script src="../js/header.js" defer></script>
-  <script src="../js/main-home1.js" defer></script>
-  <script src="../js/navbar.js" defer></script>
+  <script type="module" src="../js/main-home1.js" defer></script>
+  <script type="module" src="../js/navbar.js" defer></script>
 
   <title>직촌</title>
 </head>
@@ -38,8 +39,8 @@
 
       <!-- 추후 물품 스와이프로 넘어가도록 구현 -->
       <div class="recommend-list">
-        <ul role="list">
-          <li>
+        <ul role="list" id="product-list">
+          <!-- <li>
             <a href="../html/product-info.html"><img src="../images/recommendLIst-1.jpg" alt="product1" class="prod-img"></a>
             <div class="prod-info">
               <div class="product">
@@ -98,7 +99,7 @@
               </div>
               <div class="price">10000원</div>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
       <hr>
@@ -108,20 +109,16 @@
       <h2>카테고리별 쇼핑하기 ></h2>
       <div class="category">
         <div class="farm-prod">
-          <a href="../html/main-home2.html" target="_blank"><img src="../images/farm-prod.png"
-              class="category-elem" /></a>
+          <img src="../images/farm-prod.png" class="category-elem"/>
         </div>
         <div class="livestock-prod">
-          <a href="../html/main-home2.html" target="_blank"><img src="../images/livestock-prod.png"
-              class="category-elem"></a>
+          <img src="../images/livestock-prod.png" class="category-elem">
         </div>
         <div class="marine-prod">
-          <a href="../html/main-home2.html" target="_blank"><img src="../images/marine-prod.png"
-              class="category-elem"></a>
+          <img src="../images/marine-prod.png" class="category-elem">
         </div>
         <div class="process-prod">
-          <a href="../html/main-home2.html" target="_blank"><img src="../images/process-prod.png"
-              class="category-elem"></a>
+          <img src="../images/process-prod.png" class="category-elem">
         </div>
       </div>
     </section>

@@ -1,13 +1,16 @@
+import { checkTokenValid, checkTokenExistence } from './common/jwt_token_check.js';
+
 let fetchData = [];
-var myHeaders = new Headers();
 let pageNum  = 0;
+
+/* Header 설정 */
+var myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
 
 const urlParams = new URLSearchParams(window.location.search);
 const categoryId = urlParams.get('id');
 console.log(categoryId);
 const url = `/products?category=${categoryId}&page=${pageNum}`
-
- renderSubCategoryBtn();
 
 function loadProdData() {
     fetch(url, {
@@ -100,8 +103,12 @@ function renderProdData(data) {
     })
 }
 
-function categoryFilter() {
-    $('.category-details button').on('click', function (event) {
-        event.preventDefault();
-    });
+// function categoryFilter() {
+//     $('.category-details button').on('click', function (event) {
+//         event.preventDefault();
+//     });
+// }
+
+window.onload = function main() {
+  renderSubCategoryBtn();
 }

@@ -7,7 +7,7 @@
  * @returns {boolean} true: 토큰이 존재함
  * @returns {boolean} false: 토큰이 존재하지 않음
  */
-function checkTokenExistence() {
+export function checkTokenExistence() {
   return localStorage.getItem("access_token") !== null ? true : false;
 }
 
@@ -19,7 +19,7 @@ function checkTokenExistence() {
  * @returns {string} seller: 판매자
  * @returns {string} customer: 구매자
  */
-function checkUserRole() {
+export function checkUserRole() {
   return localStorage.getItem("user_role");
 }
 
@@ -33,7 +33,7 @@ function checkUserRole() {
  * @param {Promise} response: fetch() 함수의 반환값
  * @returns none
 */
-function checkTokenValid(response) {
+export function checkTokenValid(response) {
   if (response.status === 401) {
     fetch('https://api.example.com/refresh', {
       method: 'POST',
@@ -53,7 +53,7 @@ function checkTokenValid(response) {
  * 
  * 로컬 스토리지의 토큰을 삭제하고, 메인 페이지로 이동합니다.
  */
-function logOut() {
+export function logOut() {
   localStorage.removeItem("access_token");
   localStorage.removeItem("user_role");
   window.alert("로그아웃 되었습니다.");
