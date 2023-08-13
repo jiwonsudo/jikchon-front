@@ -44,59 +44,24 @@ main{
     display: flex;
     padding: 1.25rem 0rem;
     justify-content: center;
+    gap: 7rem;
     border-radius: 0.625rem;
-    gap: 2.5rem;
     background: #FFF;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
+.order-box-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
 .order-date{
     color: #000;
     font-family: Pretendard;
     font-size: 0.75rem;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
-}
-.order-name{
-    color: #000;
-    font-family: Pretendard;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-.order-num{
-    color: #000;
-    font-family: Pretendard;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.order-img{
-    width: 2.5rem;
-    height: 2.5rem; 
-}
-.order-left-box2{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-}
-.order-left-box1{
-    display: flex;
-    align-items: center; /* 가로 정렬 */
-    gap: 0.5rem;
-}
-.order-con-name{
-    color: #000;
-    text-align: right;
-    font-family: Pretendard;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 .order-price{
     color: #000;
@@ -106,8 +71,15 @@ main{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-top:0.75em;
-    margin-bottom:0.2rem;
+}
+.order-box-right{
+    text-align:right;
+}
+.order-number{
+    color: #000;
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 400;
 }
 .order-detail{
     color: #000;
@@ -118,16 +90,9 @@ main{
     font-weight: 400;
     line-height: normal;
     text-decoration-line: underline;
+    margin-top: 1.05rem;
 }
-.order-left-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap:0.75rem;
-}
-.order-right-box{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.item-image{
+    width: 2.5rem;
+    height: 2.5rem;
 }

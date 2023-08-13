@@ -20,32 +20,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     var submitButton = document.getElementById("submit");
     submitButton.addEventListener("click", function() {
-        // 서버로 보내는 로직 추가
         sendList(selectedItem);
     });
     
 });
 
-// function sendList(selectedItem){
-//     const formData = newFormData();
-//     formData.append(
-//         new Blob([Json.stringify(selectedItem)],{
-//             type:'application/json'
-//         })
-//     );
-//     const url = "http://127.0.0.1:8000";
-//     const tokenn = localStorage.getItem('token');
-//     var myHeaders = new Headers();
-//     myHeaders.append('Authorization','Bearer'+token);
-//     fetch(url{
-//         headers: myHeaders,
-//         body:formData,
-//         method: "POST"
-//     })
-//     .then((Response)=>Response.json())
-//     .then((result)=>console.log(result))
-//     .catch((error)=>{
-//         console.error(error);
-//     })
-//     console.log("전송완료 : ",selectedItem)
-// }
+function sendList(selectedItem){
+    const formData = newFormData();
+    formData.append(
+        "interestCategory",
+        new Blob([Json.stringify(selectedItem)],{
+            type:'application/json'
+        })
+    );
+    const url = "/members/interest";
+    var myHeaders = new Headers();
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token);
+    fetch(url,{
+        headers: myHeaders,
+        body:formData,
+        method: "POST"
+    })
+    .then((Response)=>Response.json())
+    .then((result)=>console.log(result))
+    .catch((error)=>{
+        console.error(error);
+    })
+    console.log("전송완료 : ",selectedItem)
+}
