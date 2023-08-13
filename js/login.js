@@ -14,7 +14,7 @@ function login() {
   if (userID === '' || userPW === '') {
     window.alert('아이디와 비밀번호를 모두 입력해 주세요.');
   } else {
-    fetch('example.com/members/login', {
+    fetch('/members/login', {
       method: 'POST',
       body: JSON.stringify({
         phoneNumber: userID,
@@ -24,10 +24,10 @@ function login() {
     .then(response => response.json())
     .then(response => {
       if (response.status === 200) {
-        localStorage.setItem('access_token', response.data.accessToken);
+        localStorage.setItem('access_token', response.data.token);
         localStorage.setItem('user_role', response.data.role);
         window.alert('로그인에 성공하였습니다.');
-        window.location.href = './';
+        window.location.href = '/main-home1';
       } else {
         window.alert(`${response.status}: 로그인에 실패하였습니다.`);
       }

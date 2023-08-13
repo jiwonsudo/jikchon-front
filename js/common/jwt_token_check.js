@@ -24,9 +24,11 @@ function checkUserRole() {
 }
 
 /** 
- * 토큰 유효성 검사 함수
+ * access 토큰 유효성 검사 함수
  * 
- * 토큰의 유효성을 검사하고, 유효하지 않으면 리프레시 토큰으로 갱신합니다.
+ * access 토큰의 유효성을 검사합니다.
+ * 검사 결과 access 토큰이 유효하면 아무 작업도 하지 않고,
+ * 유효하지 않으면 refresh 토큰으로 기존 localstorage의 access 토큰을 갱신합니다.
  * 
  * @param {Promise} response: fetch() 함수의 반환값
  * @returns none
@@ -35,10 +37,13 @@ function checkTokenValid(response) {
   if (response.status === 401) {
     fetch('https://api.example.com/refresh', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
     .then(response => response.json())
     .then(response => {
-      localStorage.setItem("access_token", response.data.accessToken);
+      localStorage.setItem("access_token", response.data.token);
     });
   }
 }
@@ -62,7 +67,8 @@ function inquireCart() {
   fetch("https://api.example.com/cart", {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("access_token")}`
+      'Content-Type': "application/json",
+      'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
     },
   })
   .then(checkTokenValid(response))
