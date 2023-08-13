@@ -1,6 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // enrollItem();
   setCategory();
 });
+
+function enrollItem(){
+  fetch("/products", {
+    method: "GET",
+    headers: {
+      'Content-Type': "application/json",
+      'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  })
+  .then(checkTokenValid(response))
+  .then(response => response.json())
+  .then(response => {
+    console.log(response.data); // 가져온 데이터 처리
+  });
+}
 
 function setCategory(){
   var bigCategorySelect = document.getElementById("item-big-category");
@@ -9,7 +25,7 @@ function setCategory(){
     // bigCategorySelect의 변경에 따라 smallCategorySelect 옵션을 설정하는 함수
     bigCategorySelect.addEventListener("change", function() {
       var selectedValue = bigCategorySelect.value;
-      smallCategorySelect.innerHTML = ""; // 기존 옵션 제거
+      smallCategorySelect.innerHTML = "";
       
       if (selectedValue === "농산물") {
         populateSmallCategory(["과일", "채소", "버섯","곡물","건농산물"]);
@@ -20,7 +36,6 @@ function setCategory(){
       }else if (selectedValue === "가공식품") {
         populateSmallCategory(["앙념류", "반찬류", "유제품"]);
       }
-      // 추가할 다른 카테고리들에 대한 조건문을 여기에 작성할 수 있습니다.
     });
     
     function populateSmallCategory(categories) {
@@ -33,21 +48,27 @@ function setCategory(){
     }
 }
 
-function loadFile(event){
-    console.log("file load");
+//이미지 여러장으로 받아내기!
+function loadFiles(event) {
+  var imageContainer = document.getElementById("image-container");
+  imageContainer.innerHTML = '';
+  imageContainer.style.background = "none";
+
+  var files = event.target.files;
+  for (var i = 0; i < files.length; i++) {
     var reader = new FileReader();
-    reader.onload = function(event){
+    reader.onload = function(event) {
       var img = document.createElement("img");
-      img.setAttribute("src",event.target.result);
-      img.style.width = "10rem"; // 이미지의 가로 크기를 100px로 설정
-      img.style.height = "10rem"; // 이미지의 세로 크기를 100px로 설정
-      var image_container = document.getElementById("image-container");
-      image_container.innerHTML = ''
-      image_container.appendChild(img);
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  
+      img.classList.add('item-img');
+      img.setAttribute("src", event.target.result);
+      img.style.width = 10/i+"rem";
+      img.style.height = 10/i+"rem";
+      img.style.margin = '0.1rem';
+      imageContainer.appendChild(img);
+    };
+    reader.readAsDataURL(files[i]);
   }
+}
 
   function submit(){
     var productName = document.getElementById('item-name').value;
@@ -62,30 +83,37 @@ function loadFile(event){
         'productName': productName,
         'price' : price,
         'quantity' : quantity,
-        // 'smallCategory':smallCategory,
+        'smallCategory':smallCategory,
         'intro' : intro
     }
 
-    // const formData = newFormData();
-    // formData.append(
-    //     new Blob([Json.stringify(itemRequest)],{
-    //         type:'application/json'
-    //     })
-    // );
-    // const url = "http://127.0.0.1:8000";
-    // const tokenn = localStorage.getItem('token');
-    // var myHeaders = new Headers();
-    // myHeaders.append('Authorization','Bearer'+token);
-    // fetch(url{
-    //     headers: myHeaders,
-    //     body:formData,
-    //     method: "POST"
-    // })
-    // .then((Response)=>Response.json())
-    // .then((result)=>console.log(result))
-    // .catch((error)=>{
-    //     console.error(error);
-    // })
+    const formData = new FormData();
+    for (var i = 0; i < files.length; i++) {
+      formData.append('productImageList', files[i]);
+    }
+    formData.append(
+      'productRequestDto',
+        new Blob([Json.stringify(itemRequest)],{
+            type:'application/json'
+        })
+    );
+
+    console.log(formData);
+    var myHeaders = new Headers();
+    const url = "/products";
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token);
+
+    fetch(url,{
+        headers: myHeaders,
+        body:formData,
+        method: "POST"
+    })
+    .then((Response)=>Response.json())
+    .then((result)=>console.log(result))
+    .catch((error)=>{
+        console.error(error);
+    })
     console.log("전송완료 : ",selectedItem)
   }
 
