@@ -1,8 +1,66 @@
-// 회원가입 api
-// 로그인 api
-
+import { checkTokenValid, checkTokenExistence } from './common/jwt_token_check.js';
 
 let prodList = [
+    {
+        imgUrl: '../images/apple.jpg',
+        productName: '사과',
+        category: '과일',
+        categoryNum: 101
+    },
+    {
+        imgUrl: '../images/eggs.jpg',
+        productName: '계란',
+        category: '닭/오리/알류',
+        categoryNum: 203
+    },
+    {
+        imgUrl: '../images/pig.jpg',
+        productName: '돼지고기',
+        category: '돼지',
+        categoryNum: 202
+    },
+    {
+        imgUrl: '../images/fish.jpg',
+        productName: '고등어',
+        category: '생선류',
+        categoryNum: 301
+    },
+    {
+        imgUrl: '../images/laver.jpg',
+        productName: '김',
+        category: '김/해조류    ',
+        categoryNum: 303
+    },
+    {
+        imgUrl: '../images/milk.png',
+        productName: '우유',
+        category: '유제품',
+        categoryNum: 403
+    },
+    {
+        imgUrl: '../images/redpepper_paste.jpg',
+        productName: '고추장',
+        category: '양념류',
+        categoryNum: 401
+    },
+    {
+        imgUrl: '../images/rice.jpg',
+        productName: '쌀',
+        category: '곡물',
+        categoryNum: 104
+    },
+    {
+        imgUrl: '../images/shellfish.jpg',
+        productName: '조개',
+        category: '해산물/어패류',
+        categoryNum: 304
+    },
+    {
+        imgUrl: '../images/leek.png',
+        productName: '파',
+        category: '야채',
+        categoryNum: 102
+    },
     {
         imgUrl: '../images/lemon.png',
         productName: '레몬',
@@ -71,22 +129,18 @@ let prodList = [
     }
 ];
 
-var myHeaders = new Headers();
-const token = localStorage.getItem('token');
-
-
 let interestProd = {
     interestCategory: []
 }
 
+const token = localStorage.getItem('token');
+var myHeaders = new Headers();
+myHeaders.append('Authorization', 'Bearer ' + token);
+myHeaders.append('Content-Type', 'application/json');
+
 let prodStartIndex = 0;
 let prodEndIndex = 9;
 
-window.onload = function() {
-    loadInterestedList();
-    var teadbear = 'Bearer ' + token;        
-    myHeaders.append('Authorization', 'Bearer ' + token);
-};
 
 function loadInterestedList() {
     const recommendList = document.getElementById('recommendList');
@@ -114,7 +168,15 @@ function loadInterestedList() {
         listItem.addEventListener('click', () => {
             const categoryName = item.category;
             const categoryNum = item.categoryNum;
-            interestProd.interestCategory.push(categoryName);
+            if (interestProd.interestCategory.includes(categoryName)){
+                listItem.style.border = "2px solid white";
+                interestProd.interestCategory = interestProd.interestCategory.filter(name => name !== categoryName);
+            }
+            else {
+                interestProd.interestCategory.push(categoryName);
+                listItem.style.border = "2px solid gray";
+            }
+
             console.log('category: ' + categoryName);
             console.log('categoryNum: ' + categoryNum);
             console.log(interestProd);
@@ -126,27 +188,52 @@ function loadInterestedList() {
     prodEndIndex += 9;
 }
 
-function postInterestCategory() {
-    var url;
-    /* 통신용 코드 */
-    // fetch(url, {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(interestProd)
-    // })
-    // .then(response => {
-    //     if (!response.ok) {
-    //         throw new Error("관심카테고리 선택 실패");
-    //     }
-    //     return response.json();
-    // })
-    // .then(data => {
-    //     console.log("관심카테고리 선택 성공.", data);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });        
+function reloadInterestedList() {
+    const recommendList = document.getElementById('recommendList');
+    const reload = document.querySelector(".reload");
+    
+    reload.addEventListener('click', () => {    
+        while (recommendList.firstChild) {
+            recommendList.removeChild(recommendList.firstChild);
+        }
+        loadInterestedList();        
+    })
 }
 
+function postInterestCategory() {
+    var url = "/members/interest";
+    const saveBtn = document.getElementById('save-btn');
+
+    saveBtn.addEventListener('click', () => {  
+        /* 통신용 코드 */
+        fetch(url, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(interestProd)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("관심카테고리 선택 실패");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("관심카테고리 선택 성공.", data);
+        })
+        .catch(error => {
+            console.error(error);
+        });        
+    })
+
+}
+
+window.onload = function () {
+    if (checkTokenExistence()) {
+        loadInterestedList();
+        reloadInterestedList();
+        postInterestCategory();
+    }
+    else {
+        window.location.href = "../html/login.html";
+    }
+};

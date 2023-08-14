@@ -14,6 +14,7 @@ function loadRecommendList() {
     if (checkTokenExistence()) {
         fetch(url, {
             headers: myHeaders,
+            method: 'GET'
         })
             .then(checkTokenValid(response))
             .then((response) => response.json())

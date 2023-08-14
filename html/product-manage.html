@@ -12,8 +12,8 @@
   <link href="../css/footer.css" rel="stylesheet">
 
   <script src="../js/header.js" defer></script>
-  <script src="../js/product-manage.js" defer></script>
-  <script src="../js/navbar.js" defer></script>
+  <script type="module" src="../js/product-manage.js" defer></script>
+  <script type="module" src="../js/navbar.js" defer></script>
   <title>상품 관리</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
     </div>
   </header>
 
-  <div class="container">
+  <div class="container" id="container">
     <h1>상품 관리</h1>
     <section class="order-list">
         <ul role="list">
@@ -46,20 +46,6 @@
             </li>
             <li class="order-comp">
                 <img src="../images/eggs.png" alt="" class="prod-img">
-                <div class="order-info-box">
-                    <div class="order-info">
-                        <p class="prod-name">프로덕트 이름</p>
-                        <p class="price">00000원</p>
-                        <p class="inventory-quantity">수량 000개</p>
-                    </div>
-                    <div class="btn-box">
-                        <button class="change-btn">수정하기</button>
-                        <button class="delete-btn">삭제하기</button>
-                    </div>
-                </div>
-            </li>
-            <li class="order-comp">
-                <img src="../images/apple.png" alt="" class="prod-img">
                 <div class="order-info-box">
                     <div class="order-info">
                         <p class="prod-name">프로덕트 이름</p>
