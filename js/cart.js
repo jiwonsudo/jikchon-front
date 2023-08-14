@@ -5,28 +5,28 @@ let pageNum = 0;
 
 /* Header 설정 */
 const token = localStorage.getItem('access_token');
-var myHeaders  = new Headers();
+var myHeaders = new Headers();
 myHeaders.append('Authorization', 'Bearer ' + token);
 myHeaders.append('Content-Type', 'application/json');
 
-function loadCartData() {
-    let url = `/members/cart?page=${pageNum}`;
-    /* 통신용 코드 */
-    fetch(url, {
-        headers: myHeaders,
-        method: "GET"
-    })
-        .then(checkTokenValid(response))
-        .then((response) => response.json())
-        .then((data) => {
-            let data1 = data.data;
-            console.log(data1);
-            fetchData = data1;
-        })
-        .catch((error) => {
-            console.error('An error occurred while loading store data:', error);
-        });
-}
+// function loadCartData() {
+//     let url = `/members/cart?page=${pageNum}`;
+//     /* 통신용 코드 */
+//     fetch(url, {
+//         headers: myHeaders,
+//         method: "GET"
+//     })
+//         .then(checkTokenValid(response))
+//         .then((response) => response.json())
+//         .then((data) => {
+//             let data1 = data.data;
+//             console.log(data1);
+//             fetchData = data1;
+//         })
+//         .catch((error) => {
+//             console.error('An error occurred while loading store data:', error);
+//         });
+// }
 
 
 /* 통신 data로 cart rendering */
@@ -55,22 +55,27 @@ function renderCartData(data) {
     });
 }
 
+let liIndex;
 
 function getCartListIndex() {
     const cartList = document.getElementById("cart-li");
+    const amountBox = document.querySelectorAll(".amount-box");
 
-    cartList.addEventListener("click", function (event) {
-        const clickedLi = event.target.closest("li");
-
-        if (clickedLi) {
-            // 클릭한 li 요소의 인덱스를 찾아서 사용
-            liIndex = Array.from(cartList.children).indexOf(clickedLi);
-        }
-    });
+    amountBox.forEach(btn => {
+        btn.addEventListener("click", function (event) {
+            const clickedLi = event.target.closest("li");
+            if (clickedLi) {
+                // 클릭한 li 요소의 인덱스를 찾아서 사용
+                liIndex = Array.from(cartList.children).indexOf(clickedLi);
+                console.log(liIndex);
+            }
+        });
+    })
 }
 
 function decreaseQuantity() {
-    var selectComp = `cart-li li:nth-child(${liIndex + 1}) .quantity-input`
+    console.log("down");
+    var selectComp = `#cart-li li:nth-child(${liIndex + 1}) .quantity-input`
 
     const quantityInput = document.querySelector(selectComp);
     const currentValue = parseInt(quantityInput.value);
@@ -80,8 +85,14 @@ function decreaseQuantity() {
     }
 }
 
+const decreaseButton = document.querySelectorAll(".quantity-down-btn");
+decreaseButton.forEach(product => {
+    product.addEventListener("click", decreaseQuantity);
+})
+
 function increaseQuantity() {
-    var selectComp = `cart-li li:nth-child(${liIndex + 1}) .quantity-input`
+    console.log("up");
+    var selectComp = `#cart-li li:nth-child(${liIndex + 1}) .quantity-input`
 
     const quantityInput = document.querySelector(selectComp);
     const currentValue = parseInt(quantityInput.value);
@@ -89,14 +100,16 @@ function increaseQuantity() {
     quantityInput.value = currentValue + 1;
 }
 
+const increaseButton = document.querySelectorAll(".quantity-up-btn");
+increaseButton.forEach(product => {
+    product.addEventListener("click", increaseQuantity);
+})
+
+var formData = [];
+
 function payCart() {
     const cartItems = document.querySelectorAll("#cart-li li");
-    var formData = [
-        {
-            id: fetchData.id,
-            quantity: quantity
-        }
-    ];
+    const postUrl = "/purchases/cart";
 
     cartItems.forEach((item, index) => {
         const quantityInput = item.querySelector(".quantity-input");
@@ -105,14 +118,30 @@ function payCart() {
         // formData.append(`item[${index}][quantity]`, quantityValue);
         formData.append(`item[${index}][quantity]`, quantityValue);
     });
-    
 
+    fetch(postUrl, {
+        method: "POST",
+        headers: myHeaders,
+        body: JSON.stringify(formData)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("관심카테고리 선택 실패");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("관심카테고리 선택 성공.", data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
 function returnMainHome() {
     const buyBtn = document.querySelector(".buy-btn");
 
-    buyBtn.addEventListener("click", () => {        
+    buyBtn.addEventListener("click", () => {
         window.location.href = "../html/main-home1.html";
     })
 }
@@ -120,9 +149,8 @@ function returnMainHome() {
 window.onload = function main() {
     // loadCartData();
     // renderCartData();
-    decreaseQuantity();
-    increaseQuantity();
+    // payCart();
+    getCartListIndex()
     returnMainHome();
-    payCart();
 }
 

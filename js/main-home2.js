@@ -2,6 +2,7 @@ import { checkTokenValid, checkTokenExistence } from './common/jwt_token_check.j
 
 let fetchData = [];
 let pageNum = 0;
+/* 임시데이터
 let temporaryData1 = {
   "data": {
     "totalCount": 12,
@@ -80,7 +81,6 @@ let temporaryData1 = {
     ]
   }
 }
-
 let temporaryData2 = {
   "data": {
     "totalCount": 12,
@@ -152,6 +152,7 @@ let temporaryData2 = {
     ]
   }
 }
+*/
 
 /* Header 설정 */
 var myHeaders = new Headers();
