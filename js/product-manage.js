@@ -29,8 +29,14 @@ function loadProdManageData() {
     }
 }
 
+let isLoading = false;
+
 function loadMoreItems() {
-    pageNum++;
+    if (fetchData.totalPage > pageNum) {
+        pageNum++;
+        console.log("pageNum: ", pageNum);
+    }
+    isLoading = true;
     let nextPageData = [];
 
     fetch(urls, {
@@ -48,21 +54,17 @@ function loadMoreItems() {
 }
 
 function ProdInfinityScroll() {
-    const orderList = document.querySelector('.order-list');
-    console.log("함수실행");
-
-    container.addEventListener('scroll', () => {
-        console.log("scroll 리스너 실행");
-        const scrollHeight = orderList.scrollHeight;
-        const scrollTop = orderList.scrollTop;
-        const clientHeight = orderList.clientHeight;
-
-        if (scrollHeight-scrollTop >= (clientHeight+20)) {
-            console.log("무한스크롤실행");
-            loadMoreItems();
-        }
-    });
-}
+    window.addEventListener("scroll" , function() {
+      const SCROLLED_HEIGHT = window.scrollY;
+      const WINDOW_HEIGHT = window.innerHeight;
+      const DOC_TOTAL_HEIGHT = document.body.offsetHeight;
+      const IS_END = (WINDOW_HEIGHT + SCROLLED_HEIGHT > DOC_TOTAL_HEIGHT - 10);
+  
+      if (IS_END && !isLoading) {
+        loadMoreItems();
+      }
+    })
+  }
 
 let indexOfClickBtn = 0;
 
@@ -131,6 +133,7 @@ function renderProdManageData(data) {
 
         orderList.appendChild(listItem);
     });
+    isLoading = false;
 }
 
 function deleteProduct(itemId) {
@@ -152,11 +155,8 @@ function deleteProduct(itemId) {
         });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    ProdInfinityScroll();
-});
-
 window.onload = function main() {
     loadProdManageData();
-    renderProdManageData(fetchData);
+    renderProdManageData(fetchData.itemList);
+    ProdInfinityScroll();
 }
