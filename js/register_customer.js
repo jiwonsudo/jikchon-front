@@ -57,6 +57,9 @@ function checkPhoneNumberNotDuplicated() {
   // 전화번호 중복 검사
   fetch('/members/phone-number', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       phoneNumber: phoneNumber,
     }),
@@ -114,6 +117,9 @@ btnRegister.addEventListener('click', () => {
     const phoneNumber = inputPhoneNumber1.value + inputPhoneNumber2.value + inputPhoneNumber3.value;
     fetch('/members/register', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         "phoneNumber": phoneNumber,
         "password": inputPW.value,
