@@ -13,16 +13,14 @@
     <link href="../css/footer.css" rel="stylesheet">
 
     <script src="../js/header.js" defer></script>
-    <script src="../js/interest-product.js" defer></script>
-    <script src="../js/navbar.js" defer></script>
+    <script type="module" src="../js/interest-product.js" defer></script>
+    <script type="module" src="../js/navbar.js" defer></script>
 
 
     <title>관심 상품</title>
 </head>
 
 <body>
-
-    <!-- 로그인 된 상태일 경우 -->
     <header class="header">
         <div class="main-logo-container">
             <!-- 아래 a href 속성에 링크 추가-->
@@ -32,10 +30,10 @@
 
     <div class="container">
         <h1>회원가입 완료!</h1>
-        <h2>000님이 자주 구매하시는 <br> 상품을 눌러주세요!</h2>
+        <h2>자주 구매하시는 <br> 상품을 눌러주세요!</h2>
 
         <div class="recommend-box">
-            <img src="../images/reset.png" alt="" class="reload" onclick="loadInterestedList()">
+            <img src="../images/reset.png" alt="" class="reload">
             <div class="recommend-list">
                 <ul role="list" id="recommendList">
                     <!-- <li>
@@ -76,7 +74,7 @@
                     </li> -->
                 </ul>
 
-                <button class="save-btn">저장하기</button>
+                <button class="save-btn" id="save-btn">저장하기</button>
             </div>
         </div>
     </div>

@@ -1,9 +1,16 @@
+import { checkTokenValid, checkTokenExistence } from './common/jwt_token_check.js';
+
 let fetchData = [];
-let myHeaders = new Headers;
+// url 부분 백엔드에 질문
+var url;
+
+/* Header 정보 */
+var myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
 
 function receiptDataLoad() {
     fetch(url, {
-        // headers: myHeaders,
+        headers: myHeaders,
     })
         .then((response) => response.json())
         .then((data) => {
