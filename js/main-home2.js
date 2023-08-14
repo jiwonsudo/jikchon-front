@@ -2,6 +2,156 @@ import { checkTokenValid, checkTokenExistence } from './common/jwt_token_check.j
 
 let fetchData = [];
 let pageNum = 0;
+let temporaryData1 = {
+  "data": {
+    "totalCount": 12,
+    "totalPage": 2,
+    "itemList": [
+      {
+        "id": 13,
+        "productName": "A++ 한우 꽃등심 160g",
+        "category": "소고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 12,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 14,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 15,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 16,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 17,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 18,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 19,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 10,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 21,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      }
+    ]
+  }
+}
+
+let temporaryData2 = {
+  "data": {
+    "totalCount": 12,
+    "totalPage": 2,
+    "itemList": [
+      {
+        "id": 22,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 23,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 24,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 25,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 26,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 12,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 12,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 12,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      },
+      {
+        "id": 12,
+        "productName": "삼겹살 320g",
+        "category": "돼지고기",
+        "price": 20000,
+        "imageUrl": "이미지 경로"
+      }
+    ]
+  }
+}
 
 /* Header 설정 */
 var myHeaders = new Headers();
@@ -28,8 +178,14 @@ function loadProdData() {
     });
 }
 
+let isLoading = false;
+
 function loadMoreItems() {
-  pageNum++;
+  if (2 > pageNum){
+    pageNum++;
+    console.log("pageNum: ", pageNum);
+  }
+  isLoading = true;
   let nextPageData = [];
 
   fetch(url, {
@@ -38,28 +194,25 @@ function loadMoreItems() {
     .then((response) => response.json())
     .then((data) => {
       let data1 = data.data;
-      console.log(data1);
       nextPageData = data1;
     })
     .catch((error) => {
       console.error('An error occurred while loading store data:', error);
     });
-  renderProdData(nextPageData);
+  renderProdData(nextPageData.itemList);
 }
 
 function ProdInfinityScroll() {
-  const container = document.querySelector('.container');
+  window.addEventListener("scroll" , function() {
+    const SCROLLED_HEIGHT = window.scrollY;
+    const WINDOW_HEIGHT = window.innerHeight;
+    const DOC_TOTAL_HEIGHT = document.body.offsetHeight;
+    const IS_END = (WINDOW_HEIGHT + SCROLLED_HEIGHT > DOC_TOTAL_HEIGHT - 10);
 
-  container.addEventListener('scroll', () => {
-    const scrollHeight = container.scrollHeight;
-    const scrollTop = container.scrollTop;
-    const clientHeight = container.clientHeight;
-
-    if (scrollTop + clientHeight >= scrollHeight - 10) {
-      console.log("무한스크롤 실행");
+    if (IS_END && !isLoading) {
       loadMoreItems();
     }
-  });
+  })
 }
 
 function renderSubCategoryBtn() {
@@ -108,7 +261,7 @@ function renderSubCategoryBtn() {
   }
 }
 
-function renderProdData(data) {
+function renderProdData(productsData) {
   const productList = document.getElementById("product-list");
   productsData.forEach(product => {
     const li = document.createElement("li");
@@ -119,7 +272,7 @@ function renderProdData(data) {
             <div class="product">
               <div class="brands">
                 <p>${product.brandName}</p>
-                <img src="../images/cart-icon.svg" class="cart-img" />
+                <img src="../images/cart_icon.svg" class="cart-img" />
               </div>
               <div class="prod-name">
                 <p>${product.productName}</p>
@@ -137,11 +290,12 @@ function renderProdData(data) {
 
     productList.appendChild(li);
   })
+  isLoading = false;
 }
 
 window.onload = function main() {
   loadProdData();
-  renderProdData(fetchData);
+  renderProdData(temporaryData1.data.itemList);
   renderSubCategoryBtn();
   ProdInfinityScroll();
 }
