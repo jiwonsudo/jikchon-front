@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // sell_checkOrders();
+    getData();
+});
+function sell_checkOrders(){
+    fetch("/members/purchases?page=0", {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+      .then(checkTokenValid(response))
+      .then(response => response.json())
+      .then(response => {
+        console.log(response.data); // 가져온 데이터 처리
+      });
+}
+function getData(){
     var orders = [
         {
             id : 1,
@@ -18,31 +36,30 @@ document.addEventListener("DOMContentLoaded", function() {
             conName:"김직촌",
         }
     ];
-    const url = '/members/products?page=0';
-    var myHeaders = new Headers();
-    const token = localStorage.getItem('access_token');
-    myHeaders.append('Authorization','Bearer'+token);  
-    fetch(url,{
-        headers:myHeaders,
-        method:"GET",
-    })
-    .then((response)=>{
-        return response.json();
-    })
-    .then(date => {
-        if(data.httpStatus==='OK'){
-            var orders = data.data.itemList;
-        } else {
-            console.error("데이터 가져오기 실패");
-        }
-    })
-    .catch((error)=>{
-        console.error("오류발생",error);
-    });
+    // const url = '/members/products?page=0';
+    // var myHeaders = new Headers();
+    // const token = localStorage.getItem('access_token');
+    // myHeaders.append('Authorization','Bearer'+token);  
+    // fetch(url,{
+    //     headers:myHeaders,
+    //     method:"GET",
+    // })
+    // .then((response)=>{
+    //     return response.json();
+    // })
+    // .then(date => {
+    //     if(data.httpStatus==='OK'){
+    //         var orders = data.data.itemList;
+    //     } else {
+    //         console.error("데이터 가져오기 실패");
+    //     }
+    // })
+    // .catch((error)=>{
+    //     console.error("오류발생",error);
+    // });
     
     setOrderList(orders);
-    
-});
+}
 
 function setOrderList(orders){
     var orderList= document.getElementById("order-list");
