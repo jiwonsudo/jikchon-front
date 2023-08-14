@@ -18,20 +18,23 @@ function con_checkOrders(){
       });
 }
 function getOrders(){
-    var orders = [
-        {
-            orderNumber:"12345678",
-            productImage:["../images/apple.png","../images/eggs.png","../images/cabbage.png"],
-            orderDate:"2023.01.01",
-            orderPrice: "00000원"
-        },
-        {
-            orderNumber:"23456789",
-            productImage:["../images/eggs.png","../images/garlic.png","../images/milk.png"],
-            orderDate:"2023.02.02",
-            orderPrice:"11111원"
-        }
-    ];
+    var data = {
+        content : [
+            {
+                orderNumber:"12345678",
+                imageUrlList:["../images/apple.png","../images/eggs.png","../images/cabbage.png"],
+                orderDate:"2023.01.01",
+                price: "00000원"
+            },
+            {
+                orderNumber:"23456789",
+                imageUrlList:["../images/eggs.png","../images/garlic.png","../images/milk.png"],
+                orderDate:"2023.02.02",
+                price:"11111원"
+            }
+        ]
+    }
+    
 
     const url = '/members/purchases?page=0';
     var myHeaders = new Headers();
@@ -46,7 +49,7 @@ function getOrders(){
     })
     .then(date => {
         if(data.httpStatus==='OK'){
-            var orders = data.data.itemList;
+            data = data;
         } else {
             console.error("데이터 가져오기 실패");
         }
@@ -58,8 +61,10 @@ function getOrders(){
     setOrderList(orders);
 }
 
-function setOrderList(orders){
+function setOrderList(data){
     var orderList= document.getElementById("order-list");
+
+    orders = data.content;
     orders.forEach(function(order){
         var orderBox = document.createElement("div");
         orderBox.classList.add("order-box");
@@ -74,7 +79,7 @@ function setOrderList(orders){
         var itemImageBox = document.createElement("div");
         itemImageBox.classList.add("item-image-box");
 
-        order.productImage.forEach(function(imageSrc){
+        order.imageUrlList.forEach(function(imageSrc){
             var itemImage = document.createElement("img")
             itemImage.classList.add("item-image");
             itemImage.src = imageSrc;
@@ -92,10 +97,10 @@ function setOrderList(orders){
 
         var orderPrice = document.createElement("p");
         orderPrice.classList.add("order-price");
-        orderPrice.textContent = order.orderPrice;
+        orderPrice.textContent = order.price;
 
         var orderDetailLink = document.createElement("a");
-        orderDetailLink.href = '' // 자세히 보기에 연결된 링크
+        orderDetailLink.href = '/customer/receipt/{id}' // 자세히 보기에 연결된 링크
 
         var orderDetail = document.createElement("p");
         orderDetail.classList.add('order-detail');

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     var orders = [
         {
+            id : 1,
             productImage:"../images/apple.png",
             orderDate:"2023.01.01",
             orderPrice: "00000원",
@@ -95,7 +96,7 @@ function setOrderList(orders){
         var orderDetail = document.createElement("a");
         orderDetail.classList.add("order-detail");
         orderDetail.textContent = "자세히보기";
-        orderDetail.href = '';
+        orderDetail.href = '/seller/receipt/'+order.id;
 
         rightBox.appendChild(conName);
         rightBox.appendChild(orderPrice);
