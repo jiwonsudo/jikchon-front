@@ -1,5 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-
+    getData();
+    // con_receipt();
+});
+function con_receipt(){
+    fetch("/members/productss?page=0", {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+      .then(checkTokenValid(response))
+      .then(response => response.json())
+      .then(response => {
+        console.log(response.data); // 가져온 데이터 처리
+      });
+}
+function getData(){
     var data = {
         orderId: 2,
         totalPrice : 55000,
@@ -35,8 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // });
     
     setPurchaseList(data);
-    
-});
+}
 
 function setPurchaseList(data){
 
