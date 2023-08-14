@@ -182,7 +182,7 @@ function loadProdData() {
 let isLoading = false;
 
 function loadMoreItems() {
-  if (2 > pageNum){
+  if (fetchData.totalPage > pageNum){
     pageNum++;
     console.log("pageNum: ", pageNum);
   }
