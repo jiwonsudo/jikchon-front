@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // con_recommend();
+    choiceItems();
+});
+
+function con_recommend(){
+    fetch("/members/interest", {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+        },
+      })
+      .then(checkTokenValid(response))
+      .then(response => response.json())
+      .then(response => {
+        console.log(response.data); // 가져온 데이터 처리
+      });
+}
+function choiceItems(){
     var itemImages = document.querySelectorAll(".item-image");
     var selectedItem = [];
 
@@ -22,8 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
     submitButton.addEventListener("click", function() {
         sendList(selectedItem);
     });
-    
-});
+}
 
 function sendList(selectedItem){
     const formData = newFormData();
@@ -48,4 +66,9 @@ function sendList(selectedItem){
         console.error(error);
     })
     console.log("전송완료 : ",selectedItem)
+    moveChangePage();
+}
+function moveChangePage(){
+    alert("저장이 완료되었습니다.");
+    window.location.href = "../html/mypage_customer.html";
 }
