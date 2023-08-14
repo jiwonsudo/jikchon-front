@@ -7,8 +7,8 @@
   <link href="../css/header.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
   <link href="../css/footer.css" rel="stylesheet">
-  <link href="../css/register_seller.css" rel="stylesheet">
-  <title>직촌 - 회원가입(판매자)</title>
+  <link href="../css/register_customer.css" rel="stylesheet">
+  <title>직촌 - 회원가입(구매자)</title>
 </head>
 <body>
 
@@ -35,7 +35,7 @@
   </nav>
 
   <section class="registration-container">
-    <h1 class="registration-title">회원가입 - 판매자</h1>
+    <h1 class="registration-title">회원가입 - 구매자</h1>
     <div class="registration-form">
       <div class="component-container">
         <h1>이름 (본명)</h1>
@@ -90,17 +90,6 @@
         </p>
       </div>
       <div class="component-container">
-        <h1>사업자등록번호 (10자리)</h1>
-        <div class="company-registration-container">
-          <input id="input-company-registration" class="input-company-registration" type="text" placeholder="ex: 1234567890">
-          <button id="company-registration-search-button" class="company-registration-search-button">확인</button>
-        </div>
-        <p id="warn-company-registration" class="violation-info">
-          <img src="../images/exclamation_mark_icon.svg">
-          <span id="warn-msg-company-registration">사업자등록번호 메세지</span>
-        </p>
-      </div>
-      <div class="component-container">
         <h1>주소</h1>
         <h2>우편 번호</h2>
         <div class="zipcode-container">
@@ -126,7 +115,7 @@
   </footer>
   
   <script src="../js/header.js"></script>
-  <script src="../js/register_seller.js"></script>
+  <script src="../js/register_customer.js"></script>
   <script type="module" src="../js/navbar.js"></script>
   <script type="module" src="../js/common/jwt_token_check.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
