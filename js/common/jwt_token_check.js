@@ -39,20 +39,28 @@ export function checkUserRole() {
  * 검사 결과 access 토큰이 유효하면 아무 작업도 하지 않고,
  * 유효하지 않으면 refresh 토큰으로 기존 localstorage의 access 토큰을 갱신합니다.
  * 
- * @param {Promise} response: fetch() 함수의 반환값
  * @returns none
 */
-export function checkTokenValid(response) {
-  if (response.status === 401) {
-    fetch('https://api.example.com/refresh', {
+export function checkTokenValid() {
+  const now = new Date().getTime()
+  const tokenExpiresIn = Number(localStorage.getItem("expires_in"));
+
+  if (tokenExpiresIn < now) {
+    fetch('/members/refresh', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': "application/json",
       },
     })
     .then(response => response.json())
     .then(response => {
-      localStorage.setItem("access_token", response.data.token);
+      if (response.status === 200 ) {
+        localStorage.setItem("access_token", response.data.access_token);
+        localStorage.setItem("expires_in", response.data.expires_in);
+      } else throw new Error(response.message);
+    })
+    .catch(error => {
+      console.log(error);
     });
   }
 }
@@ -64,6 +72,7 @@ export function checkTokenValid(response) {
  */
 export function logOut() {
   localStorage.removeItem("access_token");
+  localStorage.removeItem("expires_in");
   localStorage.removeItem("user_role");
   window.alert("로그아웃 되었습니다.");
   window.location.href = "./main-home1.html";
@@ -73,6 +82,8 @@ export function logOut() {
 
 // !!! 예시 - 장바구니 조회 함수
 function inquireCart() {
+  checkTokenValid();
+
   fetch("https://api.example.com/cart", {
     method: "GET",
     headers: {
@@ -80,7 +91,6 @@ function inquireCart() {
       'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
     },
   })
-  .then(checkTokenValid(response))
   .then(response => response.json())
   .then(response => {
     console.log(response.data); // 가져온 데이터 처리
