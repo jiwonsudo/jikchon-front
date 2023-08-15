@@ -1,8 +1,6 @@
 const inputName = document.getElementById('input-name');
 const inputPW = document.getElementById('input-password');
 const inputPWCheck = document.getElementById('input-password-check');
-const inputEmail1 = document.getElementById('input-email-1');
-const inputEmail2 = document.getElementById('input-email-2');
 const inputPhoneNumber1 = document.getElementById('input-phone-1');
 const inputPhoneNumber2 = document.getElementById('input-phone-2');
 const inputPhoneNumber3 = document.getElementById('input-phone-3');
@@ -13,7 +11,6 @@ const inputDetailAddress = document.getElementById('input-detail-address');
 
 const warningPW = document.getElementById('warn-password');
 const warningPWCheck = document.getElementById('warn-password-check');
-const warningEmail = document.getElementById('warn-email');
 const warningPhoneNumber = document.getElementById('warn-phone');
 const warningCompanyRegistration = document.getElementById('warn-company-registration');
 
@@ -32,18 +29,7 @@ let isCompanyRegistrationAuthenticated = false;
 
 // 빈칸 검사 함수
 function checkAnyInputEmpty() {
-  return inputName.value === '' || inputPW.value === '' || inputPWCheck.value === '' || inputEmail1.value === '' || inputEmail2.value === '' || inputPhoneNumber1.value === '' || inputPhoneNumber2.value === '' || inputPhoneNumber3.value === '' || inputCompanyRegistration.value === '' || inputZipcode.value === '' || inputAddress.value === '' || inputDetailAddress.value === '';
-}
-
-// 이메일 유효성 검사 함수
-function checkEmailValid() {
-  const email = inputEmail1.value + '@' + inputEmail2.value;
-  // 이메일 유효성 검사
-  if (!REGEX_EMAIL.test(email)) {
-    warningEmail.classList.add('show');
-  } else {
-    warningEmail.classList.remove('show');
-  }
+  return inputName.value === '' || inputPW.value === '' || inputPWCheck.value === '' || inputPhoneNumber1.value === '' || inputPhoneNumber2.value === '' || inputPhoneNumber3.value === '' || inputCompanyRegistration.value === '' || inputZipcode.value === '' || inputAddress.value === '' || inputDetailAddress.value === '';
 }
 
 // 전화번호 유효성 검사 함수
@@ -158,9 +144,6 @@ inputPWCheck.onblur = () => {
   }
 }
 
-inputEmail1.onblur = checkEmailValid;
-inputEmail2.onblur = checkEmailValid;
-
 inputPhoneNumber1.onblur = checkPhoneNumberValid;
 inputPhoneNumber2.onblur = checkPhoneNumberValid;
 inputPhoneNumber3.onblur = checkPhoneNumberValid;
@@ -173,6 +156,7 @@ btnAuthCompanyRegistration.addEventListener('click', () => {
 
 
 btnRegister.addEventListener('click', () => {
+  checkPhoneNumberNotDuplicated();
   if (checkAnyInputEmpty()) {
     window.alert('빈칸을 모두 입력해 주세요.');
   } else if (warningPW.classList.contains('show')) {
@@ -188,7 +172,6 @@ btnRegister.addEventListener('click', () => {
   } else if (warningCompanyRegistration.classList.contains('show')) {
     window.alert('사업자 등록번호가 올바르지 않거나 이미 가입된 번호예요.');
   } else {
-    const email = inputEmail1.value + '@' + inputEmail2.value;
     const phoneNumber = inputPhoneNumber1.value + inputPhoneNumber2.value + inputPhoneNumber3.value;
     fetch('/members/signup/seller', {
       method: 'POST',
