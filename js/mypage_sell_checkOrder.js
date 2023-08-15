@@ -17,25 +17,39 @@ function sell_checkOrders(){
       });
 }
 function getData(){
-    var orders = [
-        {
-            id : 1,
-            productImage:"../images/apple.png",
-            orderDate:"2023.01.01",
-            orderPrice: "00000원",
-            orderName:"프로덕트 이름",
-            orderNum:"수량 0개",
-            conName:"김직촌",
-        },
-        {
-            productImage:"../images/milk.png",
-            orderDate:"2023.01.01",
-            orderPrice: "00000원",
-            orderName:"프로덕트 이름",
-            orderNum:"수량 0개",
-            conName:"김직촌",
-        }
-    ];
+    var data = {
+        totalCount: 12,
+        itemList:[
+            {
+                orderId:20,
+                purchasedId :13,
+                productName : "A++ 한우 꽃등심 160g",
+                quantity : 3,
+                totalPrice : 60000,
+                orderAt : "2023.12,04",
+                imageUrl : "../images/meat.jpg",
+                purchaseCustomer : {
+                    id :2,
+                    name : "김직촌",
+                    phoneNumber : "010-1234-5678"
+                }
+            },
+            {
+                orderId:19,
+                purchasedId :12,
+                productName : "A++ 한우 꽃등심 160g",
+                quantity : 3,
+                totalPrice : 60000,
+                orderAt : "2023.12,04",
+                imageUrl : "../images/meat.jpg",
+                purchaseCustomer : {
+                    id :2,
+                    name : "김직촌",
+                    phoneNumber : "010-1234-5678"
+                }
+            }
+        ]
+    }  
     // const url = '/members/products?page=0';
     // var myHeaders = new Headers();
     // const token = localStorage.getItem('access_token');
@@ -58,12 +72,15 @@ function getData(){
     //     console.error("오류발생",error);
     // });
     
-    setOrderList(orders);
+    setOrderList(data);
 }
 
-function setOrderList(orders){
+function setOrderList(data){
     var orderList= document.getElementById("order-list");
-    orders.forEach(function(order){
+
+    var itemLists = data.itemList;
+    itemLists.forEach(function(itemList){
+        purchaseCustomer = itemList.purchaseCustomer;
         var orderBox = document.createElement("div");
         orderBox.classList.add("order-box");
 
@@ -75,22 +92,22 @@ function setOrderList(orders){
 
         var orderDate = document.createElement("p");
         orderDate.classList.add("order-date");
-        orderDate.textContent = order.orderDate;
+        orderDate.textContent = itemList.orderAt;
 
         var leftBox1 = document.createElement('div');
         leftBox1.classList.add("order-left-box1")
         
         var itemImage = document.createElement("img");
         itemImage.classList.add("order-img");
-        itemImage.src = order.productImage;
+        itemImage.src = itemList.imageUrl;
 
         var orderName = document.createElement("p");
         orderName.classList.add("order-name");
-        orderName.textContent = order.orderName;
+        orderName.textContent = itemList.productName;
 
         var orderNum = document.createElement("p");
         orderNum.classList.add("order-num");
-        orderNum.textContent = order.orderNum;
+        orderNum.textContent = itemList.orderID;
 
         leftBox2.appendChild(orderName);
         leftBox2.appendChild(orderNum);
@@ -104,16 +121,16 @@ function setOrderList(orders){
 
         var conName = document.createElement("p");
         conName.classList.add("order-con-name");
-        conName.textContent = "주문자명 : " + order.conName;
+        conName.textContent = "주문자명 : " + purchaseCustomer.name;
 
         var orderPrice = document.createElement("p");
         orderPrice.classList.add("order-price");
-        orderPrice.textContent = order.orderPrice;
+        orderPrice.textContent = itemList.totalPrice;
 
         var orderDetail = document.createElement("a");
         orderDetail.classList.add("order-detail");
         orderDetail.textContent = "자세히보기";
-        orderDetail.href = '/seller/receipt/'+order.id;
+        orderDetail.href = '/seller/receipt/'+itemList.purchasedId;
 
         rightBox.appendChild(conName);
         rightBox.appendChild(orderPrice);

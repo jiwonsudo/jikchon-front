@@ -1,3 +1,5 @@
+var files = [];
+
 document.addEventListener("DOMContentLoaded", function() {
   // enrollItem();
   setCategory();
@@ -54,7 +56,7 @@ function loadFiles(event) {
   imageContainer.innerHTML = '';
   imageContainer.style.background = "none";
 
-  var files = event.target.files;
+  files = event.target.files;
   for (var i = 0; i < files.length; i++) {
     var reader = new FileReader();
     reader.onload = function(event) {
@@ -75,7 +77,7 @@ function loadFiles(event) {
     var smallCategory = document.getElementById('item-small-category').value;
     var price = document.getElementById('item-price').value;
     var quantity = document.getElementById('item-amount').value;
-    var intro = document.getElementById('item-introduce').value;
+    var intro = document.getElementById('item-detailed').value;
 
     const fileInput = document.getElementById("item-image")
 
@@ -93,27 +95,32 @@ function loadFiles(event) {
     }
     formData.append(
       'productRequestDto',
-        new Blob([Json.stringify(itemRequest)],{
+        new Blob([JSON.stringify(itemRequest)],{
             type:'application/json'
         })
     );
 
-    console.log(formData);
-    var myHeaders = new Headers();
-    const url = "/products";
-    const token = localStorage.getItem('access_token');
-    myHeaders.append('Authorization','Bearer'+token);
+    // console.log(formData);
+    // var myHeaders = new Headers();
+    // const url = "/products";
+    // const token = localStorage.getItem('access_token');
+    // myHeaders.append('Authorization','Bearer'+token);
 
-    fetch(url,{
-        headers: myHeaders,
-        body:formData,
-        method: "POST"
-    })
-    .then((Response)=>Response.json())
-    .then((result)=>console.log(result))
-    .catch((error)=>{
-        console.error(error);
-    })
-    console.log("전송완료 : ",selectedItem)
+    // fetch(url,{
+    //     headers: myHeaders,
+    //     body:formData,
+    //     method: "POST"
+    // })
+    // .then((Response)=>Response.json())
+    // .then((result)=>console.log(result))
+    // .catch((error)=>{
+    //     console.error(error);
+    // })
+    console.log("전송완료 : ",files)
+    moveChangePage();
   }
 
+  function moveChangePage(){
+    alert("등록이 완료되었습니다.");
+    window.location.href = "../html/product-manage.html";
+}
