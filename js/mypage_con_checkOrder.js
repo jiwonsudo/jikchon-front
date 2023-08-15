@@ -19,15 +19,18 @@ function con_checkOrders(){
 }
 function getOrders(){
     var data = {
+        currentPage:0,
+        pageSize : 20,
+        totalElements:1,
         content : [
             {
-                orderNumber:"12345678",
+                id:"1",
                 imageUrlList:["../images/apple.png","../images/eggs.png","../images/cabbage.png"],
                 orderDate:"2023.01.01",
                 price: "00000원"
             },
             {
-                orderNumber:"23456789",
+                id:"2",
                 imageUrlList:["../images/eggs.png","../images/garlic.png","../images/milk.png"],
                 orderDate:"2023.02.02",
                 price:"11111원"
@@ -61,6 +64,15 @@ function getOrders(){
     setOrderList(data);
 }
 
+function formatOrderNumber(orderNumber) {
+    orderNumber = orderNumber.toString();
+    while (orderNumber.length < 8) {
+      orderNumber = '0' + orderNumber;
+    }
+    
+    return orderNumber;
+}
+
 function setOrderList(data){
     var orderList= document.getElementById("order-list");
 
@@ -74,7 +86,7 @@ function setOrderList(data){
 
         var orderNumber = document.createElement("p");
         orderNumber.classList.add("order-number");
-        orderNumber.textContent = "주문번호" + order.orderNumber;
+        orderNumber.textContent = "주문번호 " + formatOrderNumber(order.id);
 
         var itemImageBox = document.createElement("div");
         itemImageBox.classList.add("item-image-box");
@@ -100,7 +112,7 @@ function setOrderList(data){
         orderPrice.textContent = order.price;
 
         var orderDetailLink = document.createElement("a");
-        orderDetailLink.href = '/customer/receipt/{id}' // 자세히 보기에 연결된 링크
+        orderDetailLink.href = '/customer/receipt/'+order.id // 자세히 보기에 연결된 링크
 
         var orderDetail = document.createElement("p");
         orderDetail.classList.add('order-detail');
