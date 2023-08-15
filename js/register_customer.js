@@ -120,12 +120,13 @@ btnRegister.addEventListener('click', () => {
         window.alert('회원가입에 성공하였습니다.');
         window.location.href = '/login.html';
       } else {
-        window.alert(`${response.status}: 회원가입에 실패하였습니다.`);
+        console.log(response);
+        throw new Error(error);
       }
     })
     .catch(error => {
       console.error(error);
-      window.alert('회원가입에 실패하였습니다.');
+      window.alert(error, '회원가입에 실패하였습니다.');
     });
   }
 });
