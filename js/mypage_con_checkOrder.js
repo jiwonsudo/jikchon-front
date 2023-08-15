@@ -1,17 +1,29 @@
+import { checkTokenExistence, checkTokenValid } from "./common/jwt_token_check";
+
 document.addEventListener("DOMContentLoaded", function() {
     // con_checkOrders();
     getOrders();
 });
 
 function con_checkOrders(){
-    fetch("/members/purchases?page=0", {
+    if(!checkTokenExistence()){
+        window.alert('로그인이 필요한 서비스입니다. 로그인 화면으로 이동합니다.');
+        window.location.href = './login.html';
+    }else {
+        if (checkUserRole() !== 'customer') {
+          window.alert('잘못된 접근입니다.');
+          window.location.href = './main-home1.html';
+          return;
+        }
+    }
+    checkTokenValid();
+    fetch("/customer/purchases?page=0", {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
           'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
         },
       })
-      .then(checkTokenValid(response))
       .then(response => response.json())
       .then(response => {
         console.log(response.data); // 가져온 데이터 처리
@@ -39,7 +51,7 @@ function getOrders(){
     }
     
 
-    const url = '/members/purchases?page=0';
+    const url = '/customer/purchases?page=0';
     var myHeaders = new Headers();
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token); 

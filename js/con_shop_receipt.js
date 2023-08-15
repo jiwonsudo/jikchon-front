@@ -1,9 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-    getData();
+    var idValue = getQueryParamValue('id');
+    console.log(currentUrl)
+    getData(idValue);
     // con_receipt();
 });
-function con_receipt(){
-    fetch("/members/productss?page=0", {
+function getQueryParamValue(paramName){
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(paramName);
+}
+function con_receipt(idValue){
+    fetch("/customer/receipt/"+idValue, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -16,7 +22,7 @@ function con_receipt(){
         console.log(response.data); // 가져온 데이터 처리
       });
 }
-function getData(){
+function getData(id){
     var data = {
         // orderId: 2,
         // totalPrice : 55000,
@@ -37,7 +43,7 @@ function getData(){
     }
        
 
-    const url = '/members/products?page=0';
+    const url = '/customer/receipt/'+id;
     var myHeaders = new Headers();
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token);  
