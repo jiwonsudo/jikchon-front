@@ -49,7 +49,7 @@
         </div>
         <div class = "item-name-box" >
             <p class = "item-enroll-title">제품명</p>
-            <input type = "text" id = "item-name" class = "input" readonly/>
+            <input type = "text" id = "item-name" class = "input"/>
         </div>
         <div class = "item-category">
           <p class = "item-enroll-title">상품 카테고리</p>
@@ -67,15 +67,20 @@
         </div>
         <div class = "item-price-box" >
             <p class = "item-enroll-title">가격</p>
-            <input type = "number" id = "item-price" class = "input" readonly/>
+            <input type = "number" id = "item-price" class = "input"/>
         </div>
         <div class = "item-amount-box" >
             <p class = "item-enroll-title">판매 수량 등록</p>
-            <input type = "number" id = "item-amount" class = "input" readonly/>
+            <input type = "number" id = "item-amount" class = "input"/>
         </div>
-        <div class = "item-amount-box" >
+        <div class = "item-detailed-box" >
             <p class = "item-enroll-title">상품 소개</p>
-            <input type = "field" id = "item-introduce" class = "field" readonly/>
+            <textarea
+                id="item-detailed"
+                class="item-detailed"
+                rows="5"
+              ></textarea
+              >
         </div>
         <button type = "submit" class = "submit-button" onclick="submit()">저장하기</button>
     </div>
