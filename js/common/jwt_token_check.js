@@ -46,7 +46,7 @@ export function checkTokenValid() {
   const tokenExpiresIn = Number(localStorage.getItem("expires_in"));
 
   if (tokenExpiresIn < now) {
-    fetch('http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/refresh', {
+    fetch('/members/refresh', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json",
@@ -82,18 +82,18 @@ export function logOut() {
 
 
 // !!! 예시 - 장바구니 조회 함수
-function inquireCart() {
-  checkTokenValid();
+// function inquireCart() {
+//   checkTokenValid();
 
-  fetch("https://api.example.com/cart", {
-    method: "GET",
-    headers: {
-      'Content-Type': "application/json",
-      'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
-    },
-  })
-  .then(response => response.json())
-  .then(response => {
-    console.log(response.data); // 가져온 데이터 처리
-  });
-}
+//   fetch("https://api.example.com/cart", {
+//     method: "GET",
+//     headers: {
+//       'Content-Type': "application/json",
+//       'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
+//     },
+//   })
+//   .then(response => response.json())
+//   .then(response => {
+//     console.log(response.data); // 가져온 데이터 처리
+//   });
+// }
