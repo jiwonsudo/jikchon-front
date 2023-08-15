@@ -18,46 +18,46 @@ function con_receipt(){
 }
 function getData(){
     var data = {
-        orderId: 2,
-        totalPrice : 55000,
-        purchaseList : [
-            {
-                id: 1,
-                productName: "사과",
-                quantity: 3,
-                price: 12000
-            },
-            {
-                id : 2,
-                productName : "소",
-                quantity: 3,
-                price : 30000
-            }
-        ]  
+        // orderId: 2,
+        // totalPrice : 55000,
+        // purchaseList : [
+        //     {
+        //         id: 1,
+        //         productName: "사과",
+        //         quantity: 3,
+        //         price: 12000
+        //     },
+        //     {
+        //         id : 2,
+        //         productName : "소",
+        //         quantity: 3,
+        //         price : 30000
+        //     }
+        // ]  
     }
        
 
-    // const url = '/members/products?page=0';
-    // var myHeaders = new Headers();
-    // const token = localStorage.getItem('access_token');
-    // myHeaders.append('Authorization','Bearer'+token);  
-    // fetch(url,{
-    //     headers:myHeaders,
-    //     method:"GET",
-    // })
-    // .then((response)=>{
-    //     return response.json();
-    // })
-    // .then(date => {
-    //     if(data.httpStatus==='OK'){
-    //         data = data;
-    //     } else {
-    //         console.error("데이터 가져오기 실패");
-    //     }
-    // })
-    // .catch((error)=>{
-    //     console.error("오류발생",error);
-    // });
+    const url = '/members/products?page=0';
+    var myHeaders = new Headers();
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token);  
+    fetch(url,{
+        headers:myHeaders,
+        method:"GET",
+    })
+    .then((response)=>{
+        return response.json();
+    })
+    .then(date => {
+        if(data.httpStatus==='OK'){
+            data = data;
+        } else {
+            console.error("데이터 가져오기 실패");
+        }
+    })
+    .catch((error)=>{
+        console.error("오류발생",error);
+    });
     
     setPurchaseList(data);
 }

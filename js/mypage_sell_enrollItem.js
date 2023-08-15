@@ -100,22 +100,22 @@ function loadFiles(event) {
         })
     );
 
-    // console.log(formData);
-    // var myHeaders = new Headers();
-    // const url = "/products";
-    // const token = localStorage.getItem('access_token');
-    // myHeaders.append('Authorization','Bearer'+token);
+    console.log(formData);
+    var myHeaders = new Headers();
+    const url = "/products";
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token);
 
-    // fetch(url,{
-    //     headers: myHeaders,
-    //     body:formData,
-    //     method: "POST"
-    // })
-    // .then((Response)=>Response.json())
-    // .then((result)=>console.log(result))
-    // .catch((error)=>{
-    //     console.error(error);
-    // })
+    fetch(url,{
+        headers: myHeaders,
+        body:formData,
+        method: "POST"
+    })
+    .then((Response)=>Response.json())
+    .then((result)=>console.log(result))
+    .catch((error)=>{
+        console.error(error);
+    })
     console.log("전송완료 : ",files)
     moveChangePage();
   }

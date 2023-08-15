@@ -19,47 +19,47 @@ function con_checkOrders(){
 }
 function getOrders(){
     var data = {
-        currentPage:0,
-        pageSize : 20,
-        totalElements:1,
-        content : [
-            {
-                id:"1",
-                imageUrlList:["../images/apple.png","../images/eggs.png","../images/cabbage.png"],
-                orderDate:"2023.01.01",
-                price: "00000원"
-            },
-            {
-                id:"2",
-                imageUrlList:["../images/eggs.png","../images/garlic.png","../images/milk.png"],
-                orderDate:"2023.02.02",
-                price:"11111원"
-            }
-        ]
+        // currentPage:0,
+        // pageSize : 20,
+        // totalElements:1,
+        // content : [
+        //     {
+        //         id:"1",
+        //         imageUrlList:["../images/apple.png","../images/eggs.png","../images/cabbage.png"],
+        //         orderDate:"2023.01.01",
+        //         price: "00000원"
+        //     },
+        //     {
+        //         id:"2",
+        //         imageUrlList:["../images/eggs.png","../images/garlic.png","../images/milk.png"],
+        //         orderDate:"2023.02.02",
+        //         price:"11111원"
+        //     }
+        // ]
     }
     
 
-    // const url = '/members/purchases?page=0';
-    // var myHeaders = new Headers();
-    // const token = localStorage.getItem('access_token');
-    // myHeaders.append('Authorization','Bearer'+token); 
-    // fetch(url,{
-    //     headers:myHeaders,
-    //     method:"GET",
-    // })
-    // .then((response)=>{
-    //     return response.json();
-    // })
-    // .then(date => {
-    //     if(data.httpStatus==='OK'){
-    //         data = data;
-    //     } else {
-    //         console.error("데이터 가져오기 실패");
-    //     }
-    // })
-    // .catch((error)=>{
-    //     console.error("오류발생",error);
-    // });
+    const url = '/members/purchases?page=0';
+    var myHeaders = new Headers();
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token); 
+    fetch(url,{
+        headers:myHeaders,
+        method:"GET",
+    })
+    .then((response)=>{
+        return response.json();
+    })
+    .then(date => {
+        if(data.httpStatus==='OK'){
+            data = data;
+        } else {
+            console.error("데이터 가져오기 실패");
+        }
+    })
+    .catch((error)=>{
+        console.error("오류발생",error);
+    });
     
     setOrderList(data);
 }
