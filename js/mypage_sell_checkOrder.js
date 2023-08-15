@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     getData();
 });
 function sell_checkOrders(){
-    fetch("/members/purchases?page=0", {
+    fetch("http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/purchases?page=0", {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -50,7 +50,7 @@ function getData(){
         //     }
         // ]
     }  
-    const url = '/members/products?page=0';
+    const url = 'http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/products?page=0';
     var myHeaders = new Headers();
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token);  
@@ -130,7 +130,7 @@ function setOrderList(data){
         var orderDetail = document.createElement("a");
         orderDetail.classList.add("order-detail");
         orderDetail.textContent = "자세히보기";
-        orderDetail.href = '/seller/receipt/'+itemList.purchasedId;
+        orderDetail.href = 'http://jikchon.ap-northeast-2.elasticbeanstalk.com/seller/receipt/?id='+itemList.purchasedId;
 
         rightBox.appendChild(conName);
         rightBox.appendChild(orderPrice);

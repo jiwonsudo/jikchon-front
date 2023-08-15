@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function enrollItem(){
-  fetch("/products", {
+  fetch("http://jikchon.ap-northeast-2.elasticbeanstalk.com/products", {
     method: "GET",
     headers: {
       'Content-Type': "application/json",
@@ -102,7 +102,7 @@ function loadFiles(event) {
 
     console.log(formData);
     var myHeaders = new Headers();
-    const url = "/products";
+    const url = "http://jikchon.ap-northeast-2.elasticbeanstalk.com/products";
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token);
 
