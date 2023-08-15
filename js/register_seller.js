@@ -22,7 +22,6 @@ const btnRegister = document.getElementById('register-button');
 
 const REGEX_PHONENUMBER = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/; // 앞자리가 01이며 (0,1,6,7,8,9) 이며 중간에 3~4자리, 세번째는 4자리인 전화번호
 const REGEX_PASSWORD = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // 영어와 숫자를 포함한 8자리 이상의 비밀번호
-const REGEX_EMAIL = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const REGEX_COMPANY_REGISTRATION = /^\d{10}$/;
 
 let isCompanyRegistrationAuthenticated = false;
@@ -181,7 +180,7 @@ btnRegister.addEventListener('click', () => {
         userName: inputName.value,
         companyNumber: inputCompanyRegistration.value,
         zipcode: inputZipcode.value,
-        address: inputAddress.value + ' ' + inputDetailAddress.value,
+        address: inputAddress.value + ', ' + inputDetailAddress.value,
       }),
     })
     .then(response => response.json())

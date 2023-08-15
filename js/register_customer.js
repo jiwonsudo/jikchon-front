@@ -113,7 +113,7 @@ btnRegister.addEventListener('click', () => {
         password: inputPW.value,
         userName: inputName.value,
         zipcode: inputZipcode.value,
-        address: inputAddress.value + ' ' + inputDetailAddress.value,
+        address: inputAddress.value + ', ' + inputDetailAddress.value,
       }),
     })
     .then(response => response.json())
