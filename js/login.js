@@ -32,17 +32,19 @@ function login() {
         password: userPW,
       }),
     })
-    .then(response => response.json())
     .then(response => {
       if (response.status === 200) {
+        return response.json();
+      } else {
+        throw new Error(error);
+      }
+    })
+    .then(response => {
         localStorage.setItem('access_token', response.data.token);
         localStorage.setItem('expires_in', response.data.expiresIn);
         localStorage.setItem('user_role', response.data.role);
         window.alert('로그인에 성공하였습니다.');
         window.location.href = '/main-home1';
-      } else {
-        window.alert(`${response.status}: 로그인에 실패하였습니다.`);
-      }
     })
     .catch(error => {
       console.error('Error:', error)
