@@ -44,10 +44,10 @@ function choiceItems(){
 }
 
 function sendList(selectedItem){
-    const formData = newFormData();
+    const formData = new FormData();
     formData.append(
         "interestCategory",
-        new Blob([Json.stringify(selectedItem)],{
+        new Blob([JSON.stringify(selectedItem)],{
             type:'application/json'
         })
     );

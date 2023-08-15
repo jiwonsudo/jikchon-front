@@ -18,59 +18,59 @@ function sell_checkOrders(){
 }
 function getData(){
     var data = {
-        totalCount: 12,
-        itemList:[
-            {
-                orderId:20,
-                purchasedId :13,
-                productName : "A++ 한우 꽃등심 160g",
-                quantity : 3,
-                totalPrice : 60000,
-                orderAt : "2023.12,04",
-                imageUrl : "../images/meat.jpg",
-                purchaseCustomer : {
-                    id :2,
-                    name : "김직촌",
-                    phoneNumber : "010-1234-5678"
-                }
-            },
-            {
-                orderId:19,
-                purchasedId :12,
-                productName : "A++ 한우 꽃등심 160g",
-                quantity : 3,
-                totalPrice : 60000,
-                orderAt : "2023.12,04",
-                imageUrl : "../images/meat.jpg",
-                purchaseCustomer : {
-                    id :2,
-                    name : "김직촌",
-                    phoneNumber : "010-1234-5678"
-                }
-            }
-        ]
+        // totalCount: 12,
+        // itemList:[
+        //     {
+        //         orderId:20,
+        //         purchasedId :13,
+        //         productName : "A++ 한우 꽃등심 160g",
+        //         quantity : 3,
+        //         totalPrice : 60000,
+        //         orderAt : "2023.12,04",
+        //         imageUrl : "../images/meat.jpg",
+        //         purchaseCustomer : {
+        //             id :2,
+        //             name : "김직촌",
+        //             phoneNumber : "010-1234-5678"
+        //         }
+        //     },
+        //     {
+        //         orderId:19,
+        //         purchasedId :12,
+        //         productName : "A++ 한우 꽃등심 160g",
+        //         quantity : 3,
+        //         totalPrice : 60000,
+        //         orderAt : "2023.12,04",
+        //         imageUrl : "../images/meat.jpg",
+        //         purchaseCustomer : {
+        //             id :2,
+        //             name : "김직촌",
+        //             phoneNumber : "010-1234-5678"
+        //         }
+        //     }
+        // ]
     }  
-    // const url = '/members/products?page=0';
-    // var myHeaders = new Headers();
-    // const token = localStorage.getItem('access_token');
-    // myHeaders.append('Authorization','Bearer'+token);  
-    // fetch(url,{
-    //     headers:myHeaders,
-    //     method:"GET",
-    // })
-    // .then((response)=>{
-    //     return response.json();
-    // })
-    // .then(date => {
-    //     if(data.httpStatus==='OK'){
-    //         var orders = data.data.itemList;
-    //     } else {
-    //         console.error("데이터 가져오기 실패");
-    //     }
-    // })
-    // .catch((error)=>{
-    //     console.error("오류발생",error);
-    // });
+    const url = '/members/products?page=0';
+    var myHeaders = new Headers();
+    const token = localStorage.getItem('access_token');
+    myHeaders.append('Authorization','Bearer'+token);  
+    fetch(url,{
+        headers:myHeaders,
+        method:"GET",
+    })
+    .then((response)=>{
+        return response.json();
+    })
+    .then(date => {
+        if(data.httpStatus==='OK'){
+            var orders = data.data.itemList;
+        } else {
+            console.error("데이터 가져오기 실패");
+        }
+    })
+    .catch((error)=>{
+        console.error("오류발생",error);
+    });
     
     setOrderList(data);
 }
