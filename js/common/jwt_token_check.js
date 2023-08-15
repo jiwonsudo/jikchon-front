@@ -46,18 +46,19 @@ export function checkTokenValid() {
   const tokenExpiresIn = Number(localStorage.getItem("expires_in"));
 
   if (tokenExpiresIn < now) {
-    fetch('/members/refresh', {
+    fetch('http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/refresh', {
       method: 'POST',
       headers: {
         'Content-Type': "application/json",
       },
     })
-    .then(response => response.json())
     .then(response => {
-      if (response.status === 200 ) {
+      if (response.status === 200) return response.json();
+      else throw new Error(response.message);
+    })
+    .then(response => {
         localStorage.setItem("access_token", response.data.access_token);
         localStorage.setItem("expires_in", response.data.expires_in);
-      } else throw new Error(response.message);
     })
     .catch(error => {
       console.log(error);

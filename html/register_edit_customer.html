@@ -7,7 +7,7 @@
   <link href="../css/header.css" rel="stylesheet">
   <link href="../css/navbar.css" rel="stylesheet">
   <link href="../css/footer.css" rel="stylesheet">
-  <link href="../css/register_edit.css" rel="stylesheet">
+  <link href="../css/register_customer.css" rel="stylesheet">
   <title>직촌 - 회원 정보 수정</title>
 </head>
 <body>
@@ -38,48 +38,64 @@
     <h1 class="registration-title">회원 정보 수정</h1>
     <div class="registration-form">
       <div class="component-container">
-        <h1>수정할 비밀번호</h1>
+        <h1>이름 (본명)</h1>
         <div class="input-container">
-          <input class="input-password" type="text">
+          <input id="input-name" class="input-name" type="text">
         </div>
       </div>
       <div class="component-container">
-        <h1>수정할 비밀번호 확인</h1>
+        <h1>비밀번호 (최소 8자, 영어 & 숫자로 구성, 각 최소 1자)</h1>
         <div class="input-container">
-          <input class="input-password" type="password">
+          <input id="input-password" class="input-password" type="text">
         </div>
+        <p id="warn-password" class="violation-info">
+          <img src="../images/exclamation_mark_icon.svg">
+          <span>올바른 비밀번호 형식인지 확인해 주세요.</span>
+        </p>
       </div>
       <div class="component-container">
-        <h1>이메일</h1>
+        <h1>비밀번호 확인</h1>
         <div class="input-container">
-          <input class="input-email" type="text">
-          <span>@</span>
-          <input class="input-email" type="text" placeholder="ex: gmail.com">
+          <input id="input-password-check" class="input-password" type="password">
         </div>
+        <p id="warn-password-check" class="violation-info">
+          <img src="../images/exclamation_mark_icon.svg">
+          <span>비밀번호가 일치하지 않아요.</span>
+        </p>
       </div>
       <div class="component-container">
-        <h1>전화번호</h1>
+        <h1>전화번호 (추후 아이디로 사용)</h1>
         <div class="input-container">
-          <input class="input-number" type="text" placeholder="ex: 010">
+          <input id="input-phone-1" class="input-number" type="text" placeholder="ex: 010">
           <span>-</span>
-          <input class="input-number" type="text" placeholder="1234">
+          <input id="input-phone-2" class="input-number" type="text" placeholder="1234">
           <span>-</span>
-          <input class="input-number" type="text" placeholder="5678">
+          <input id="input-phone-3" class="input-number" type="text" placeholder="5678">
         </div>
+        <p id="warn-phone" class="violation-info">
+          <img src="../images/exclamation_mark_icon.svg">
+          <span id="warn-msg-phone">전화번호 경고메세지</span>
+        </p>
       </div>
       <div class="component-container">
         <h1>주소</h1>
+        <h2>우편 번호</h2>
+        <div class="zipcode-container">
+          <input id="input-zipcode" class="input-zipcode" type="text" placeholder="주소 검색 시 여기에 자동 입력됩니다." readonly>
+          <button id="address-search-button" class="address-search-button">주소검색</button>
+        </div>
         <h2>도로명 주소</h2>
         <div class="address-container">
-          <input class="input-address" type="text" placeholder="ex: 서울특별시 종로구 홍지문2길 20">
-          <button class="address-search-button">검색</button>
+          <input id="input-address" class="input-address" type="text" placeholder="주소 검색 시 여기에 자동 입력됩니다." readonly>
         </div>
-        <h2>상세 주소</h2>
+        <!-- 카카오 주소 찾기 API 요소 -->
+        <div id="address-searcher-container" class="address-searcher-container"></div>
+        <h2>상세 주소 (동, 호 등 추가)</h2>
         <div class="input-container">
-          <input class="input-detail-address" type="text" placeholder="ex: A동 123호">
+          <input id="input-detail-address" class="input-detail-address" type="text" placeholder="ex: A동 123호">
       </div>
     </div>
-    <button class="save-button">저장하기</button>
+    <button id="register-button" class="save-button">저장하기</button>
   </section>
 
   <footer class="footer">
@@ -87,7 +103,10 @@
   </footer>
   
   <script src="../js/header.js"></script>
+  <script src="../js/register_customer.js"></script>
   <script type="module" src="../js/navbar.js"></script>
   <script type="module" src="../js/common/jwt_token_check.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="../js/common/address_search.js"></script>
 </body>
 </html>
