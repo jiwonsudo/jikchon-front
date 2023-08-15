@@ -49,16 +49,15 @@ function checkPhoneNumberNotDuplicated() {
       phoneNumber: phoneNumber,
     }),
   })
-  .then(response => response.json())
   .then(response => {
     if (response.status === 200) {
       warningPhoneNumber.classList.remove('show');
     } else if (response.status === 403) {
-      warningPhoneNumber.classList.add('show');
       warningMSGPhoneNumber.innerText = '이미 가입된 전화번호예요.';
-    } else {
       warningPhoneNumber.classList.add('show');
+    } else {
       warningMSGPhoneNumber.innerText = '전화번호 조회에 실패했어요.';
+      warningPhoneNumber.classList.add('show');
     }
   })
   .catch(error => {
@@ -116,7 +115,6 @@ btnRegister.addEventListener('click', () => {
         address: inputAddress.value + ', ' + inputDetailAddress.value,
       }),
     })
-    .then(response => response.json())
     .then(response => {
       if (response.status === 200) {
         window.alert('회원가입에 성공하였습니다.');
