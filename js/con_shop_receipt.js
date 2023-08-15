@@ -20,14 +20,22 @@ function getData(){
     var data = {
         orderId: 2,
         totalPrice : 55000,
-        purchaseList : 
-        {
-            id: 1,
-            productName: "사과",
-            quantity: 3,
-            price: 12000
-        }
-    }   
+        purchaseList : [
+            {
+                id: 1,
+                productName: "사과",
+                quantity: 3,
+                price: 12000
+            },
+            {
+                id : 2,
+                productName : "소",
+                quantity: 3,
+                price : 30000
+            }
+        ]  
+    }
+       
 
     // const url = '/members/products?page=0';
     // var myHeaders = new Headers();
@@ -58,14 +66,29 @@ function setPurchaseList(data){
 
     document.getElementById("buyer-num").textContent = data.orderId;
     document.getElementById("total-price").textContent = data.totalPrice;
+    var productBox = document.getElementById("productBox");
+    var purchaseLists = data.purchaseList;
 
-    var purchaseList = data.purchaseList;
-    var productName= document.getElementById("product-name");
-    var quantity= document.getElementById("product-quantity");
-    var price = document.getElementById("product-price");
+    purchaseLists.forEach(function(purchaseList){
+        var product = document.createElement("div");
+        product.classList.add("product");
 
-    productName.textContent = purchaseList.productName;
-    quantity.textContent = purchaseList.quantity;
-    price.textContent = purchaseList.price;
+        var productName = document.createElement("p");
+        productName.classList.add("product-name")
+        productName.textContent = purchaseList.productName;
 
+        var productQuantity = document.createElement("p");
+        productQuantity.classList.add("product-quantity")
+        productQuantity.textContent = purchaseList.quantity;
+
+        var productPrice = document.createElement("p");
+        productPrice.classList.add("product-price")
+        productPrice.textContent = purchaseList.price;
+
+        product.appendChild(productName);
+        product.appendChild(productQuantity);
+        product.appendChild(productPrice);
+
+        productBox.appendChild(product);
+    });
 }
