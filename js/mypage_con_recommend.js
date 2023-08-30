@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function con_recommend(){
-    fetch("/members/interest", {
+    fetch("http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/interest", {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -51,7 +51,7 @@ function sendList(selectedItem){
             type:'application/json'
         })
     );
-    const url = "/members/interest";
+    const url = "http://jikchon.ap-northeast-2.elasticbeanstalk.com/members/interest";
     var myHeaders = new Headers();
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token);

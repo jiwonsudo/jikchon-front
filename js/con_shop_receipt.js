@@ -2,14 +2,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var idValue = getQueryParamValue('id');
     console.log(currentUrl)
     getData(idValue);
-    // con_receipt();
+    // con_receipt(idValue);
 });
 function getQueryParamValue(paramName){
     var urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(paramName);
 }
 function con_receipt(idValue){
-    fetch("/customer/receipt/"+idValue, {
+    fetch("http://jikchon.ap-northeast-2.elasticbeanstalk.com/customer/receipt/"+idValue, {
         method: "GET",
         headers: {
           'Content-Type': "application/json",
@@ -43,7 +43,7 @@ function getData(id){
     }
        
 
-    const url = '/customer/receipt/'+id;
+    const url = 'http://jikchon.ap-northeast-2.elasticbeanstalk.com/customer/receipt/'+id;
     var myHeaders = new Headers();
     const token = localStorage.getItem('access_token');
     myHeaders.append('Authorization','Bearer'+token);  

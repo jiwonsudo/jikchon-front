@@ -124,7 +124,7 @@ function setOrderList(data){
         orderPrice.textContent = order.price;
 
         var orderDetailLink = document.createElement("a");
-        orderDetailLink.href = '/customer/receipt/'+order.id // 자세히 보기에 연결된 링크
+        orderDetailLink.href = '/customer/receipt/?id='+order.id // 자세히 보기에 연결된 링크
 
         var orderDetail = document.createElement("p");
         orderDetail.classList.add('order-detail');
